@@ -1,0 +1,386 @@
+{
+  "format": "myengine.scene",
+  "version": 2,
+  "name": "post_demo",
+  "sky": {
+    "enabled": true,
+    "mode": "procedural",
+    "zenith_color": [
+      0.25,
+      0.45,
+      0.85
+    ],
+    "horizon_color": [
+      0.7,
+      0.8,
+      0.95
+    ],
+    "ground_color": [
+      0.2,
+      0.18,
+      0.15
+    ],
+    "sun_color": [
+      1.0,
+      0.95,
+      0.85
+    ],
+    "sun_size": 1.0,
+    "sun_glow": 20.0,
+    "exposure": 1.2,
+    "intensity": 1.0,
+    "texture_guid": null
+  },
+  "post": {
+    "tonemap": "aces",
+    "exposure": 1.0,
+    "fxaa": false,
+    "bloom": true,
+    "bloom_threshold": 1.0,
+    "bloom_intensity": 1.0,
+    "bloom_levels": 3,
+    "vignette": false,
+    "vignette_inner": 0.5,
+    "vignette_outer": 0.9,
+    "vignette_intensity": 0.3,
+    "lut": {
+      "guid": "b938eff4bc7949208859efee2bacdf72",
+      "path": "Textures/Luts/warm.png"
+    },
+    "lut_intensity": 1.0
+  },
+  "objects": [
+    {
+      "uid": "b745c259852a33f2",
+      "name": "Camera",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          0.0,
+          2.0,
+          7.0
+        ],
+        "rotation": [
+          0.0,
+          0.9963991045951843,
+          -0.08478721976280212,
+          0.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "camera": {
+            "name": "Camera",
+            "mode": "perspective",
+            "fov": 50.0,
+            "near": 0.1,
+            "far": 500.0,
+            "aspect": 1.7777777777777777,
+            "aspect_mode": "viewport",
+            "ortho_height": 10.0,
+            "position": [
+              0.0,
+              2.0,
+              7.0
+            ],
+            "rotation": [
+              0.0,
+              0.9963990806413587,
+              -0.08478721658985718,
+              0.0
+            ],
+            "viewport_rect": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "clear_color": [
+              0.078,
+              0.075,
+              0.071,
+              1.0
+            ],
+            "clear_flags": [
+              "color",
+              "depth"
+            ],
+            "culling_mask": 4294967295,
+            "depth": 0,
+            "enabled": true
+          },
+          "local_offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "local_rotation": [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "follow_owner": true,
+          "type": "CameraComponent"
+        }
+      ]
+    },
+    {
+      "uid": "af54aee15ec5f08b",
+      "name": "Sun",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          0.0,
+          6.0,
+          0.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "light": {
+            "type": "directional",
+            "color": [
+              1.0,
+              0.93,
+              0.8
+            ],
+            "intensity": 3.6,
+            "enabled": true,
+            "cast_shadow": false,
+            "layers": 4294967295,
+            "name": "Directional Light",
+            "direction": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "shadow_distance": 30.0,
+            "shadow_map_size": 512,
+            "shadow_bias": 0.0015,
+            "normal_bias": 0.02,
+            "ambient": 0.22
+          },
+          "local_offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "local_rotation": [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "follow_owner": true,
+          "type": "LightComponent"
+        }
+      ]
+    },
+    {
+      "uid": "b4a728d4d87906c6",
+      "name": "Floor",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          14.0,
+          1.0,
+          14.0
+        ]
+      },
+      "components": [
+        {
+          "mesh_ref": {
+            "guid": null,
+            "path": "plane"
+          },
+          "color": [
+            0.55,
+            0.55,
+            0.6
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "type": "MeshRenderer"
+        }
+      ]
+    },
+    {
+      "uid": "0dfcc05aaad7811a",
+      "name": "Glow 0",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          -2.5,
+          0.6000000238418579,
+          0.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "mesh_ref": {
+            "guid": null,
+            "path": "sphere"
+          },
+          "color": [
+            0.82,
+            0.82,
+            0.86
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "material_guid": "66b32c2254064d0a84db4d0969df297f",
+          "type": "MeshRenderer"
+        }
+      ]
+    },
+    {
+      "uid": "1bab07815752e5dd",
+      "name": "Glow 1",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          0.0,
+          0.6000000238418579,
+          0.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "mesh_ref": {
+            "guid": null,
+            "path": "sphere"
+          },
+          "color": [
+            0.82,
+            0.82,
+            0.86
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "material_guid": "66b32c2254064d0a84db4d0969df297f",
+          "type": "MeshRenderer"
+        }
+      ]
+    },
+    {
+      "uid": "cd9d1d907da1e368",
+      "name": "Glow 2",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          2.5,
+          0.6000000238418579,
+          0.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "mesh_ref": {
+            "guid": null,
+            "path": "sphere"
+          },
+          "color": [
+            0.82,
+            0.82,
+            0.86
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "material_guid": "66b32c2254064d0a84db4d0969df297f",
+          "type": "MeshRenderer"
+        }
+      ]
+    }
+  ]
+}

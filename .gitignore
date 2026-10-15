@@ -1,0 +1,52 @@
+# Виртуальные окружения
+.venv/
+venv/
+env/
+
+# Кэши Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Рабочие каталоги MyEngine
+_work/
+logs/
+.myengine/
+pytest-of-*/
+Library/
+# Результат сборки пака/игры проекта (регистронезависимо ``Build/`` задел бы и
+# ``build/packaging/``, поэтому только внутри проектов и в корне — не в build/).
+projects/*/Build/
+/executables/
+build/artifacts/
+
+# Логи, резервные копии, временные файлы
+*.log
+*.tmp
+*.bak
+*.orig
+
+# Пользовательские данные проектов (сейвы, локальные настройки)
+projects/*/Saves/
+projects/*/Settings/
+*.save
+
+# Сборка и покрытие
+dist/
+*.egg
+.coverage
+htmlcov/
+*.pak
+
+.claude/
+CLAUDE.md
+
+# Редакторы
+.vscode/
+.idea/
+*.swp
+Thumbs.db
+desktop.ini

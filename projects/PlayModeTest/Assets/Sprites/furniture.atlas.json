@@ -1,0 +1,8 @@
+{
+  "mode": "pack",
+  "sources": [
+    "bear_SE.png",
+    "bathtub_SE.png"
+  ],
+  "padding": 2
+}

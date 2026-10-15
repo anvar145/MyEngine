@@ -1,0 +1,10 @@
+{
+  "name": "PaintedMetal",
+  "textures": {
+    "base_color": "../Textures/PaintedMetal013/PaintedMetal013_1K-JPG_Color.png",
+    "normal": "../Textures/PaintedMetal013/PaintedMetal013_1K-JPG_NormalGL.png",
+    "roughness": "../Textures/PaintedMetal013/PaintedMetal013_1K-JPG_Roughness.png",
+    "metallic": "../Textures/PaintedMetal013/PaintedMetal013_1K-JPG_Metalness.png",
+    "ao": "../Textures/PaintedMetal013/PaintedMetal013_1K-JPG_AmbientOcclusion.png"
+  }
+}

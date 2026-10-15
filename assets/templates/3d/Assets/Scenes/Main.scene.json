@@ -1,0 +1,196 @@
+{
+  "format": "myengine.scene",
+  "version": 1,
+  "name": "Main",
+  "objects": [
+    {
+      "id": 1,
+      "name": "Floor",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          6.0,
+          1.0,
+          6.0
+        ]
+      },
+      "components": [
+        {
+          "mesh": "plane",
+          "color": [
+            0.87,
+            0.58,
+            0.24
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "type": "MeshRenderer"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Cube",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          -1.2000000476837158,
+          0.5,
+          0.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "mesh": "cube",
+          "color": [
+            0.42,
+            0.66,
+            0.86
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "type": "MeshRenderer"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Sphere",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          1.2000000476837158,
+          0.5,
+          0.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "mesh": "sphere",
+          "color": [
+            0.55,
+            0.78,
+            0.48
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "type": "MeshRenderer"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Sun",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          0.0,
+          4.0,
+          0.0
+        ],
+        "rotation": [
+          0.7363619804382324,
+          -0.33136287331581116,
+          0.0,
+          0.5898895859718323
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "light": {
+            "type": "directional",
+            "color": [
+              1.0,
+              0.98,
+              0.94
+            ],
+            "intensity": 1.0,
+            "enabled": true,
+            "cast_shadow": false,
+            "layers": 4294967295,
+            "name": "Directional Light",
+            "direction": [
+              -0.390935007234106,
+              -0.8687444895167187,
+              -0.30406057300019257
+            ],
+            "shadow_distance": 30.0,
+            "shadow_map_size": 512,
+            "shadow_bias": 0.0015,
+            "normal_bias": 0.02,
+            "ambient": 0.22
+          },
+          "local_offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "local_rotation": [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "follow_owner": true,
+          "type": "LightComponent"
+        }
+      ]
+    }
+  ]
+}

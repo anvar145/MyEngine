@@ -1,0 +1,600 @@
+{
+  "format": "myengine.scene",
+  "version": 1,
+  "name": "MainMenu",
+  "sky": {
+    "enabled": true,
+    "mode": "procedural",
+    "zenith_color": [
+      0.25,
+      0.45,
+      0.85
+    ],
+    "horizon_color": [
+      0.7,
+      0.8,
+      0.95
+    ],
+    "ground_color": [
+      0.2,
+      0.18,
+      0.15
+    ],
+    "sun_color": [
+      1.0,
+      0.95,
+      0.85
+    ],
+    "sun_size": 1.0,
+    "sun_glow": 20.0,
+    "exposure": 1.2,
+    "intensity": 1.0,
+    "texture_guid": null
+  },
+  "objects": [
+    {
+      "id": 1,
+      "name": "Camera",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          0.0,
+          1.0,
+          5.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "camera": {
+            "name": "Main Camera",
+            "mode": "perspective",
+            "fov": 60.0,
+            "near": 0.1,
+            "far": 500.0,
+            "aspect": 1.7777777777777777,
+            "aspect_mode": "viewport",
+            "ortho_height": 10.0,
+            "position": [
+              0.0,
+              1.0,
+              5.0
+            ],
+            "rotation": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "viewport_rect": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "clear_color": [
+              0.078,
+              0.075,
+              0.071,
+              1.0
+            ],
+            "clear_flags": [
+              "color",
+              "depth"
+            ],
+            "culling_mask": 4294967295,
+            "depth": 0,
+            "enabled": true
+          },
+          "local_offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "local_rotation": [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "follow_owner": true,
+          "type": "CameraComponent"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "MenuPanel",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "enabled": true,
+          "anchor": "middle_center",
+          "clip": false,
+          "opacity": 1.0,
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "position": [
+            0.0,
+            0.0
+          ],
+          "size": [
+            420.0,
+            440.0
+          ],
+          "sorting_layer": 0,
+          "visible": true,
+          "border_color": [
+            0.35,
+            0.5,
+            0.9,
+            1.0
+          ],
+          "border_width": 3.0,
+          "color": [
+            0.08,
+            0.1,
+            0.16,
+            0.92
+          ],
+          "type": "UIPanel"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Title",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": 2,
+      "transform": {
+        "position": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "enabled": true,
+          "anchor": "top_center",
+          "clip": false,
+          "opacity": 1.0,
+          "pivot": [
+            0.5,
+            0.0
+          ],
+          "position": [
+            0.0,
+            28.0
+          ],
+          "size": [
+            380.0,
+            70.0
+          ],
+          "sorting_layer": 0,
+          "visible": true,
+          "text": {
+            "text": "MyEngine",
+            "font_path": "",
+            "size_px": 56,
+            "color": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "alpha": 1.0,
+            "align": "center",
+            "vertical_align": "top",
+            "wrap_width": 0.0,
+            "line_spacing": 1.0,
+            "bold": false,
+            "italic": false,
+            "outline_color": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "outline_width": 0.0,
+            "billboard": false,
+            "units_per_pixel": 0.01,
+            "visible": true,
+            "sorting_layer": 0
+          },
+          "type": "UIText"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "PlayButton",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": 2,
+      "transform": {
+        "position": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "enabled": true,
+          "anchor": "top_center",
+          "clip": false,
+          "opacity": 1.0,
+          "pivot": [
+            0.5,
+            0.0
+          ],
+          "position": [
+            0.0,
+            130.0
+          ],
+          "size": [
+            300.0,
+            66.0
+          ],
+          "sorting_layer": 0,
+          "visible": true,
+          "font_path": "",
+          "hover_color": [
+            0.35,
+            0.42,
+            0.62,
+            1.0
+          ],
+          "interactive": true,
+          "normal_color": [
+            0.25,
+            0.3,
+            0.45,
+            1.0
+          ],
+          "on_click": "load_scene:main.scene.json",
+          "pressed_color": [
+            0.15,
+            0.2,
+            0.32,
+            1.0
+          ],
+          "size_px": 30,
+          "text": "Играть",
+          "text_color": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "type": "UIButton"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "SettingsButton",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": 2,
+      "transform": {
+        "position": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "enabled": true,
+          "anchor": "top_center",
+          "clip": false,
+          "opacity": 1.0,
+          "pivot": [
+            0.5,
+            0.0
+          ],
+          "position": [
+            0.0,
+            220.0
+          ],
+          "size": [
+            300.0,
+            66.0
+          ],
+          "sorting_layer": 0,
+          "visible": true,
+          "font_path": "",
+          "hover_color": [
+            0.35,
+            0.42,
+            0.62,
+            1.0
+          ],
+          "interactive": true,
+          "normal_color": [
+            0.25,
+            0.3,
+            0.45,
+            1.0
+          ],
+          "on_click": "event:settings",
+          "pressed_color": [
+            0.15,
+            0.2,
+            0.32,
+            1.0
+          ],
+          "size_px": 30,
+          "text": "Настройки",
+          "text_color": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "type": "UIButton"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "QuitButton",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": 2,
+      "transform": {
+        "position": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "enabled": true,
+          "anchor": "top_center",
+          "clip": false,
+          "opacity": 1.0,
+          "pivot": [
+            0.5,
+            0.0
+          ],
+          "position": [
+            0.0,
+            310.0
+          ],
+          "size": [
+            300.0,
+            66.0
+          ],
+          "sorting_layer": 0,
+          "visible": true,
+          "font_path": "",
+          "hover_color": [
+            0.35,
+            0.42,
+            0.62,
+            1.0
+          ],
+          "interactive": true,
+          "normal_color": [
+            0.25,
+            0.3,
+            0.45,
+            1.0
+          ],
+          "on_click": "event:quit",
+          "pressed_color": [
+            0.15,
+            0.2,
+            0.32,
+            1.0
+          ],
+          "size_px": 30,
+          "text": "Выход",
+          "text_color": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "type": "UIButton"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Hint",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": 2,
+      "transform": {
+        "position": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "enabled": true,
+          "anchor": "bottom_center",
+          "clip": false,
+          "opacity": 1.0,
+          "pivot": [
+            0.5,
+            1.0
+          ],
+          "position": [
+            0.0,
+            -16.0
+          ],
+          "size": [
+            380.0,
+            28.0
+          ],
+          "sorting_layer": 0,
+          "visible": true,
+          "text": {
+            "text": "Наведите курсор и нажмите кнопку",
+            "font_path": "",
+            "size_px": 20,
+            "color": [
+              0.7,
+              0.75,
+              0.85
+            ],
+            "alpha": 1.0,
+            "align": "center",
+            "vertical_align": "top",
+            "wrap_width": 0.0,
+            "line_spacing": 1.0,
+            "bold": false,
+            "italic": false,
+            "outline_color": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "outline_width": 0.0,
+            "billboard": false,
+            "units_per_pixel": 0.01,
+            "visible": true,
+            "sorting_layer": 0
+          },
+          "type": "UIText"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "QuitHandler",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "auto_start": true,
+          "path": "Assets/Scripts/quit.py",
+          "type": "ScriptComponent"
+        }
+      ]
+    }
+  ]
+}

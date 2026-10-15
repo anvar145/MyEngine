@@ -1,0 +1,83 @@
+{
+  "version": 1,
+  "actions": {
+    "Jump": {
+      "kind": "button",
+      "bindings": [
+        {"device": "keyboard", "code": "space"},
+        {"device": "gamepad", "code": "button:south"}
+      ]
+    },
+    "Fire": {
+      "kind": "button",
+      "bindings": [
+        {"device": "mouse", "code": "left"},
+        {"device": "gamepad", "code": "axis:right_trigger"}
+      ]
+    },
+    "Interact": {
+      "kind": "button",
+      "bindings": [
+        {"device": "keyboard", "code": "e"},
+        {"device": "gamepad", "code": "button:west"}
+      ]
+    },
+    "Sprint": {
+      "kind": "button",
+      "bindings": [
+        {"device": "keyboard", "code": "shift"},
+        {"device": "gamepad", "code": "button:left_stick"}
+      ]
+    },
+    "Pause": {
+      "kind": "button",
+      "bindings": [
+        {"device": "keyboard", "code": "escape"},
+        {"device": "gamepad", "code": "button:start"}
+      ]
+    },
+    "Menu": {
+      "kind": "button",
+      "bindings": [
+        {"device": "keyboard", "code": "tab"},
+        {"device": "gamepad", "code": "button:back"}
+      ]
+    },
+    "Move": {
+      "kind": "axis2",
+      "deadzone": 0.15,
+      "bindings": [
+        {"device": "keyboard", "code": "d", "axis": 0, "scale": 1.0},
+        {"device": "keyboard", "code": "a", "axis": 0, "scale": -1.0},
+        {"device": "keyboard", "code": "w", "axis": 1, "scale": 1.0},
+        {"device": "keyboard", "code": "s", "axis": 1, "scale": -1.0},
+        {"device": "gamepad", "code": "axis:left_x", "axis": 0},
+        {"device": "gamepad", "code": "axis:left_y", "axis": 1, "scale": -1.0}
+      ]
+    },
+    "Look": {
+      "kind": "axis2",
+      "deadzone": 0.1,
+      "bindings": [
+        {"device": "mouse", "code": "delta_x", "axis": 0, "scale": 0.1},
+        {"device": "mouse", "code": "delta_y", "axis": 1, "scale": -0.1},
+        {"device": "gamepad", "code": "axis:right_x", "axis": 0},
+        {"device": "gamepad", "code": "axis:right_y", "axis": 1, "scale": -1.0}
+      ]
+    },
+    "UIClick": {
+      "kind": "button",
+      "bindings": [
+        {"device": "mouse", "code": "left"},
+        {"device": "gamepad", "code": "button:south"}
+      ]
+    },
+    "UICancel": {
+      "kind": "button",
+      "bindings": [
+        {"device": "keyboard", "code": "escape"},
+        {"device": "gamepad", "code": "button:east"}
+      ]
+    }
+  }
+}

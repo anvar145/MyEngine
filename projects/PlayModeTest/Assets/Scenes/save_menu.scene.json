@@ -1,0 +1,1404 @@
+{
+  "format": "myengine.scene",
+  "version": 2,
+  "name": "SaveMenu",
+  "sky": {
+    "enabled": true,
+    "mode": "procedural",
+    "zenith_color": [
+      0.25,
+      0.45,
+      0.85
+    ],
+    "horizon_color": [
+      0.7,
+      0.8,
+      0.95
+    ],
+    "ground_color": [
+      0.2,
+      0.18,
+      0.15
+    ],
+    "sun_color": [
+      1.0,
+      0.95,
+      0.85
+    ],
+    "sun_size": 1.0,
+    "sun_glow": 20.0,
+    "exposure": 1.2,
+    "intensity": 1.0,
+    "texture_guid": null
+  },
+  "objects": [
+    {
+      "uid": "1289792f91f1e721",
+      "name": "Camera",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          0.0,
+          1.0,
+          5.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "camera": {
+            "name": "Main Camera",
+            "mode": "perspective",
+            "fov": 60.0,
+            "near": 0.1,
+            "far": 500.0,
+            "aspect": 1.7777777777777777,
+            "aspect_mode": "viewport",
+            "ortho_height": 10.0,
+            "position": [
+              0.0,
+              1.0,
+              5.0
+            ],
+            "rotation": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "viewport_rect": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "clear_color": [
+              0.078,
+              0.075,
+              0.071,
+              1.0
+            ],
+            "clear_flags": [
+              "color",
+              "depth"
+            ],
+            "culling_mask": 4294967295,
+            "depth": 0,
+            "enabled": true
+          },
+          "local_offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "local_rotation": [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "follow_owner": true,
+          "type": "CameraComponent"
+        }
+      ]
+    },
+    {
+      "uid": "e00469d261f735b9",
+      "name": "SlotsPanel",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "enabled": true,
+          "anchor": "middle_center",
+          "clip": false,
+          "opacity": 1.0,
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "position": [
+            0.0,
+            0.0
+          ],
+          "size": [
+            720.0,
+            440.0
+          ],
+          "sorting_layer": 0,
+          "visible": true,
+          "border_color": [
+            0.35,
+            0.5,
+            0.9,
+            1.0
+          ],
+          "border_width": 3.0,
+          "color": [
+            0.08,
+            0.1,
+            0.16,
+            0.92
+          ],
+          "type": "UIPanel"
+        }
+      ]
+    },
+    {
+      "uid": "2704e18baa7d3101",
+      "name": "Title",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": {
+        "uid": "e00469d261f735b9"
+      },
+      "transform": {
+        "position": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "enabled": true,
+          "anchor": "top_center",
+          "clip": false,
+          "opacity": 1.0,
+          "pivot": [
+            0.5,
+            0.0
+          ],
+          "position": [
+            0.0,
+            18.0
+          ],
+          "size": [
+            600.0,
+            56.0
+          ],
+          "sorting_layer": 0,
+          "visible": true,
+          "text": {
+            "text": "Сохранения",
+            "font_path": "",
+            "size_px": 44,
+            "color": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "alpha": 1.0,
+            "align": "center",
+            "vertical_align": "top",
+            "wrap_width": 0.0,
+            "line_spacing": 1.0,
+            "bold": false,
+            "italic": false,
+            "outline_color": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "outline_width": 0.0,
+            "billboard": false,
+            "units_per_pixel": 0.01,
+            "visible": true,
+            "sorting_layer": 0
+          },
+          "type": "UIText"
+        }
+      ]
+    },
+    {
+      "uid": "8180538953868ffa",
+      "name": "GoldLabel",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": {
+        "uid": "e00469d261f735b9"
+      },
+      "transform": {
+        "position": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "enabled": true,
+          "anchor": "top_left",
+          "clip": false,
+          "opacity": 1.0,
+          "pivot": [
+            0.0,
+            0.0
+          ],
+          "position": [
+            30.0,
+            88.0
+          ],
+          "size": [
+            260.0,
+            40.0
+          ],
+          "sorting_layer": 0,
+          "visible": true,
+          "text": {
+            "text": "Золото: 0",
+            "font_path": "",
+            "size_px": 30,
+            "color": [
+              1.0,
+              0.85,
+              0.3
+            ],
+            "alpha": 1.0,
+            "align": "left",
+            "vertical_align": "top",
+            "wrap_width": 0.0,
+            "line_spacing": 1.0,
+            "bold": false,
+            "italic": false,
+            "outline_color": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "outline_width": 0.0,
+            "billboard": false,
+            "units_per_pixel": 0.01,
+            "visible": true,
+            "sorting_layer": 0
+          },
+          "type": "UIText"
+        }
+      ]
+    },
+    {
+      "uid": "b079490ba7e79041",
+      "name": "GoldButton",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": {
+        "uid": "e00469d261f735b9"
+      },
+      "transform": {
+        "position": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "enabled": true,
+          "anchor": "top_right",
+          "clip": false,
+          "opacity": 1.0,
+          "pivot": [
+            1.0,
+            0.0
+          ],
+          "position": [
+            -30.0,
+            82.0
+          ],
+          "size": [
+            200.0,
+            46.0
+          ],
+          "sorting_layer": 0,
+          "visible": true,
+          "font_path": "",
+          "hover_color": [
+            0.35,
+            0.42,
+            0.62,
+            1.0
+          ],
+          "interactive": true,
+          "normal_color": [
+            0.25,
+            0.3,
+            0.45,
+            1.0
+          ],
+          "on_click": "event:gold",
+          "pressed_color": [
+            0.15,
+            0.2,
+            0.32,
+            1.0
+          ],
+          "size_px": 22,
+          "text": "+10 золота",
+          "text_color": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "type": "UIButton"
+        }
+      ]
+    },
+    {
+      "uid": "f2a54ba57df77c2e",
+      "name": "SlotLabel_1",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": {
+        "uid": "e00469d261f735b9"
+      },
+      "transform": {
+        "position": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "enabled": true,
+          "anchor": "top_left",
+          "clip": false,
+          "opacity": 1.0,
+          "pivot": [
+            0.0,
+            0.0
+          ],
+          "position": [
+            30.0,
+            162.0
+          ],
+          "size": [
+            260.0,
+            36.0
+          ],
+          "sorting_layer": 0,
+          "visible": true,
+          "text": {
+            "text": "Слот 1: пусто",
+            "font_path": "",
+            "size_px": 26,
+            "color": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "alpha": 1.0,
+            "align": "left",
+            "vertical_align": "top",
+            "wrap_width": 0.0,
+            "line_spacing": 1.0,
+            "bold": false,
+            "italic": false,
+            "outline_color": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "outline_width": 0.0,
+            "billboard": false,
+            "units_per_pixel": 0.01,
+            "visible": true,
+            "sorting_layer": 0
+          },
+          "type": "UIText"
+        }
+      ]
+    },
+    {
+      "uid": "468d18691797ce4c",
+      "name": "Save_1",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": {
+        "uid": "e00469d261f735b9"
+      },
+      "transform": {
+        "position": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "enabled": true,
+          "anchor": "top_left",
+          "clip": false,
+          "opacity": 1.0,
+          "pivot": [
+            0.0,
+            0.0
+          ],
+          "position": [
+            300.0,
+            150.0
+          ],
+          "size": [
+            126.0,
+            56.0
+          ],
+          "sorting_layer": 0,
+          "visible": true,
+          "font_path": "",
+          "hover_color": [
+            0.35,
+            0.42,
+            0.62,
+            1.0
+          ],
+          "interactive": true,
+          "normal_color": [
+            0.25,
+            0.3,
+            0.45,
+            1.0
+          ],
+          "on_click": "event:save_1",
+          "pressed_color": [
+            0.15,
+            0.2,
+            0.32,
+            1.0
+          ],
+          "size_px": 22,
+          "text": "Сохранить",
+          "text_color": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "type": "UIButton"
+        }
+      ]
+    },
+    {
+      "uid": "8e99c7b77368a68d",
+      "name": "Load_1",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": {
+        "uid": "e00469d261f735b9"
+      },
+      "transform": {
+        "position": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "enabled": true,
+          "anchor": "top_left",
+          "clip": false,
+          "opacity": 1.0,
+          "pivot": [
+            0.0,
+            0.0
+          ],
+          "position": [
+            434.0,
+            150.0
+          ],
+          "size": [
+            126.0,
+            56.0
+          ],
+          "sorting_layer": 0,
+          "visible": true,
+          "font_path": "",
+          "hover_color": [
+            0.35,
+            0.42,
+            0.62,
+            1.0
+          ],
+          "interactive": true,
+          "normal_color": [
+            0.25,
+            0.3,
+            0.45,
+            1.0
+          ],
+          "on_click": "event:load_1",
+          "pressed_color": [
+            0.15,
+            0.2,
+            0.32,
+            1.0
+          ],
+          "size_px": 22,
+          "text": "Загрузить",
+          "text_color": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "type": "UIButton"
+        }
+      ]
+    },
+    {
+      "uid": "784502a62494912b",
+      "name": "Delete_1",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": {
+        "uid": "e00469d261f735b9"
+      },
+      "transform": {
+        "position": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "enabled": true,
+          "anchor": "top_left",
+          "clip": false,
+          "opacity": 1.0,
+          "pivot": [
+            0.0,
+            0.0
+          ],
+          "position": [
+            568.0,
+            150.0
+          ],
+          "size": [
+            126.0,
+            56.0
+          ],
+          "sorting_layer": 0,
+          "visible": true,
+          "font_path": "",
+          "hover_color": [
+            0.35,
+            0.42,
+            0.62,
+            1.0
+          ],
+          "interactive": true,
+          "normal_color": [
+            0.25,
+            0.3,
+            0.45,
+            1.0
+          ],
+          "on_click": "event:delete_1",
+          "pressed_color": [
+            0.15,
+            0.2,
+            0.32,
+            1.0
+          ],
+          "size_px": 22,
+          "text": "Удалить",
+          "text_color": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "type": "UIButton"
+        }
+      ]
+    },
+    {
+      "uid": "15232a95a11d7d35",
+      "name": "SlotLabel_2",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": {
+        "uid": "e00469d261f735b9"
+      },
+      "transform": {
+        "position": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "enabled": true,
+          "anchor": "top_left",
+          "clip": false,
+          "opacity": 1.0,
+          "pivot": [
+            0.0,
+            0.0
+          ],
+          "position": [
+            30.0,
+            252.0
+          ],
+          "size": [
+            260.0,
+            36.0
+          ],
+          "sorting_layer": 0,
+          "visible": true,
+          "text": {
+            "text": "Слот 2: пусто",
+            "font_path": "",
+            "size_px": 26,
+            "color": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "alpha": 1.0,
+            "align": "left",
+            "vertical_align": "top",
+            "wrap_width": 0.0,
+            "line_spacing": 1.0,
+            "bold": false,
+            "italic": false,
+            "outline_color": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "outline_width": 0.0,
+            "billboard": false,
+            "units_per_pixel": 0.01,
+            "visible": true,
+            "sorting_layer": 0
+          },
+          "type": "UIText"
+        }
+      ]
+    },
+    {
+      "uid": "a7b16566213d764f",
+      "name": "Save_2",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": {
+        "uid": "e00469d261f735b9"
+      },
+      "transform": {
+        "position": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "enabled": true,
+          "anchor": "top_left",
+          "clip": false,
+          "opacity": 1.0,
+          "pivot": [
+            0.0,
+            0.0
+          ],
+          "position": [
+            300.0,
+            240.0
+          ],
+          "size": [
+            126.0,
+            56.0
+          ],
+          "sorting_layer": 0,
+          "visible": true,
+          "font_path": "",
+          "hover_color": [
+            0.35,
+            0.42,
+            0.62,
+            1.0
+          ],
+          "interactive": true,
+          "normal_color": [
+            0.25,
+            0.3,
+            0.45,
+            1.0
+          ],
+          "on_click": "event:save_2",
+          "pressed_color": [
+            0.15,
+            0.2,
+            0.32,
+            1.0
+          ],
+          "size_px": 22,
+          "text": "Сохранить",
+          "text_color": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "type": "UIButton"
+        }
+      ]
+    },
+    {
+      "uid": "47d5a3105eeed2d8",
+      "name": "Load_2",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": {
+        "uid": "e00469d261f735b9"
+      },
+      "transform": {
+        "position": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "enabled": true,
+          "anchor": "top_left",
+          "clip": false,
+          "opacity": 1.0,
+          "pivot": [
+            0.0,
+            0.0
+          ],
+          "position": [
+            434.0,
+            240.0
+          ],
+          "size": [
+            126.0,
+            56.0
+          ],
+          "sorting_layer": 0,
+          "visible": true,
+          "font_path": "",
+          "hover_color": [
+            0.35,
+            0.42,
+            0.62,
+            1.0
+          ],
+          "interactive": true,
+          "normal_color": [
+            0.25,
+            0.3,
+            0.45,
+            1.0
+          ],
+          "on_click": "event:load_2",
+          "pressed_color": [
+            0.15,
+            0.2,
+            0.32,
+            1.0
+          ],
+          "size_px": 22,
+          "text": "Загрузить",
+          "text_color": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "type": "UIButton"
+        }
+      ]
+    },
+    {
+      "uid": "8cc6c72554f1bf93",
+      "name": "Delete_2",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": {
+        "uid": "e00469d261f735b9"
+      },
+      "transform": {
+        "position": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "enabled": true,
+          "anchor": "top_left",
+          "clip": false,
+          "opacity": 1.0,
+          "pivot": [
+            0.0,
+            0.0
+          ],
+          "position": [
+            568.0,
+            240.0
+          ],
+          "size": [
+            126.0,
+            56.0
+          ],
+          "sorting_layer": 0,
+          "visible": true,
+          "font_path": "",
+          "hover_color": [
+            0.35,
+            0.42,
+            0.62,
+            1.0
+          ],
+          "interactive": true,
+          "normal_color": [
+            0.25,
+            0.3,
+            0.45,
+            1.0
+          ],
+          "on_click": "event:delete_2",
+          "pressed_color": [
+            0.15,
+            0.2,
+            0.32,
+            1.0
+          ],
+          "size_px": 22,
+          "text": "Удалить",
+          "text_color": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "type": "UIButton"
+        }
+      ]
+    },
+    {
+      "uid": "76ddb82377c9db5e",
+      "name": "SlotLabel_3",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": {
+        "uid": "e00469d261f735b9"
+      },
+      "transform": {
+        "position": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "enabled": true,
+          "anchor": "top_left",
+          "clip": false,
+          "opacity": 1.0,
+          "pivot": [
+            0.0,
+            0.0
+          ],
+          "position": [
+            30.0,
+            342.0
+          ],
+          "size": [
+            260.0,
+            36.0
+          ],
+          "sorting_layer": 0,
+          "visible": true,
+          "text": {
+            "text": "Слот 3: пусто",
+            "font_path": "",
+            "size_px": 26,
+            "color": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "alpha": 1.0,
+            "align": "left",
+            "vertical_align": "top",
+            "wrap_width": 0.0,
+            "line_spacing": 1.0,
+            "bold": false,
+            "italic": false,
+            "outline_color": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "outline_width": 0.0,
+            "billboard": false,
+            "units_per_pixel": 0.01,
+            "visible": true,
+            "sorting_layer": 0
+          },
+          "type": "UIText"
+        }
+      ]
+    },
+    {
+      "uid": "3443a0845ba23e6a",
+      "name": "Save_3",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": {
+        "uid": "e00469d261f735b9"
+      },
+      "transform": {
+        "position": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "enabled": true,
+          "anchor": "top_left",
+          "clip": false,
+          "opacity": 1.0,
+          "pivot": [
+            0.0,
+            0.0
+          ],
+          "position": [
+            300.0,
+            330.0
+          ],
+          "size": [
+            126.0,
+            56.0
+          ],
+          "sorting_layer": 0,
+          "visible": true,
+          "font_path": "",
+          "hover_color": [
+            0.35,
+            0.42,
+            0.62,
+            1.0
+          ],
+          "interactive": true,
+          "normal_color": [
+            0.25,
+            0.3,
+            0.45,
+            1.0
+          ],
+          "on_click": "event:save_3",
+          "pressed_color": [
+            0.15,
+            0.2,
+            0.32,
+            1.0
+          ],
+          "size_px": 22,
+          "text": "Сохранить",
+          "text_color": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "type": "UIButton"
+        }
+      ]
+    },
+    {
+      "uid": "501902a3a5bbe2f3",
+      "name": "Load_3",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": {
+        "uid": "e00469d261f735b9"
+      },
+      "transform": {
+        "position": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "enabled": true,
+          "anchor": "top_left",
+          "clip": false,
+          "opacity": 1.0,
+          "pivot": [
+            0.0,
+            0.0
+          ],
+          "position": [
+            434.0,
+            330.0
+          ],
+          "size": [
+            126.0,
+            56.0
+          ],
+          "sorting_layer": 0,
+          "visible": true,
+          "font_path": "",
+          "hover_color": [
+            0.35,
+            0.42,
+            0.62,
+            1.0
+          ],
+          "interactive": true,
+          "normal_color": [
+            0.25,
+            0.3,
+            0.45,
+            1.0
+          ],
+          "on_click": "event:load_3",
+          "pressed_color": [
+            0.15,
+            0.2,
+            0.32,
+            1.0
+          ],
+          "size_px": 22,
+          "text": "Загрузить",
+          "text_color": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "type": "UIButton"
+        }
+      ]
+    },
+    {
+      "uid": "72b46e8c48019ff9",
+      "name": "Delete_3",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": {
+        "uid": "e00469d261f735b9"
+      },
+      "transform": {
+        "position": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "enabled": true,
+          "anchor": "top_left",
+          "clip": false,
+          "opacity": 1.0,
+          "pivot": [
+            0.0,
+            0.0
+          ],
+          "position": [
+            568.0,
+            330.0
+          ],
+          "size": [
+            126.0,
+            56.0
+          ],
+          "sorting_layer": 0,
+          "visible": true,
+          "font_path": "",
+          "hover_color": [
+            0.35,
+            0.42,
+            0.62,
+            1.0
+          ],
+          "interactive": true,
+          "normal_color": [
+            0.25,
+            0.3,
+            0.45,
+            1.0
+          ],
+          "on_click": "event:delete_3",
+          "pressed_color": [
+            0.15,
+            0.2,
+            0.32,
+            1.0
+          ],
+          "size_px": 22,
+          "text": "Удалить",
+          "text_color": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "type": "UIButton"
+        }
+      ]
+    },
+    {
+      "uid": "18e4558ff079c730",
+      "name": "SaveSlotsHandler",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "auto_start": true,
+          "path": "Assets/Scripts/save_slots.py",
+          "type": "ScriptComponent"
+        }
+      ]
+    }
+  ]
+}

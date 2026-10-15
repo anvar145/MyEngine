@@ -1,0 +1,7 @@
+{
+  "name": "Checker",
+  "roughness": 0.6,
+  "textures": {
+    "base_color": "../Textures/checker.dds"
+  }
+}

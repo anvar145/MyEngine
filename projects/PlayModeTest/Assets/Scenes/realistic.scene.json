@@ -1,0 +1,5195 @@
+{
+  "format": "myengine.scene",
+  "version": 2,
+  "name": "realistic",
+  "sky": {
+    "enabled": true,
+    "mode": "procedural",
+    "zenith_color": [
+      0.25,
+      0.45,
+      0.85
+    ],
+    "horizon_color": [
+      0.7,
+      0.8,
+      0.95
+    ],
+    "ground_color": [
+      0.2,
+      0.18,
+      0.15
+    ],
+    "sun_color": [
+      1.0,
+      0.95,
+      0.85
+    ],
+    "sun_size": 1.0,
+    "sun_glow": 20.0,
+    "exposure": 1.2,
+    "intensity": 1.0,
+    "texture_guid": null
+  },
+  "objects": [
+    {
+      "uid": "6c3e8eab28d064e0",
+      "name": "Sun",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          0.0,
+          8.0,
+          0.0
+        ],
+        "rotation": [
+          0.739387035369873,
+          -0.2957548201084137,
+          0.0,
+          0.6048437356948853
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "light": {
+            "type": "directional",
+            "color": [
+              1.0,
+              0.95,
+              0.85
+            ],
+            "intensity": 1.3,
+            "enabled": true,
+            "cast_shadow": false,
+            "layers": 4294967295,
+            "name": "Directional Light",
+            "direction": [
+              -0.35777089197053563,
+              -0.8944271662322834,
+              -0.26832821909798227
+            ],
+            "shadow_distance": 40.0,
+            "shadow_map_size": 1024,
+            "shadow_bias": 0.0015,
+            "normal_bias": 0.02,
+            "ambient": 0.22
+          },
+          "local_offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "local_rotation": [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "follow_owner": true,
+          "type": "LightComponent"
+        }
+      ]
+    },
+    {
+      "uid": "a0806ca1625f3748",
+      "name": "Floor",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          0.0,
+          -0.5,
+          0.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          30.0,
+          1.0,
+          30.0
+        ]
+      },
+      "components": [
+        {
+          "mesh_ref": {
+            "guid": null,
+            "path": "cube"
+          },
+          "color": [
+            0.55,
+            0.55,
+            0.52
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "type": "MeshRenderer"
+        },
+        {
+          "shape": "box",
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "radius": 0.5,
+          "height": 2.0,
+          "offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "is_trigger": false,
+          "friction": 0.5,
+          "restitution": 0.0,
+          "layer": 1,
+          "mask": 4294967295,
+          "type": "ColliderComponent"
+        }
+      ]
+    },
+    {
+      "uid": "6fb6fe107e70a6dc",
+      "name": "Wall North",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          0.0,
+          1.5,
+          -15.5
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          32.0,
+          3.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "mesh_ref": {
+            "guid": null,
+            "path": "cube"
+          },
+          "color": [
+            0.4,
+            0.42,
+            0.5
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "type": "MeshRenderer"
+        },
+        {
+          "shape": "box",
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "radius": 0.5,
+          "height": 2.0,
+          "offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "is_trigger": false,
+          "friction": 0.5,
+          "restitution": 0.0,
+          "layer": 1,
+          "mask": 4294967295,
+          "type": "ColliderComponent"
+        }
+      ]
+    },
+    {
+      "uid": "ed4f6cda2b3da541",
+      "name": "Wall South",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          0.0,
+          1.5,
+          15.5
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          32.0,
+          3.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "mesh_ref": {
+            "guid": null,
+            "path": "cube"
+          },
+          "color": [
+            0.4,
+            0.42,
+            0.5
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "type": "MeshRenderer"
+        },
+        {
+          "shape": "box",
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "radius": 0.5,
+          "height": 2.0,
+          "offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "is_trigger": false,
+          "friction": 0.5,
+          "restitution": 0.0,
+          "layer": 1,
+          "mask": 4294967295,
+          "type": "ColliderComponent"
+        }
+      ]
+    },
+    {
+      "uid": "f5d20bd4b916a80d",
+      "name": "Wall West",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          -15.5,
+          1.5,
+          0.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          3.0,
+          32.0
+        ]
+      },
+      "components": [
+        {
+          "mesh_ref": {
+            "guid": null,
+            "path": "cube"
+          },
+          "color": [
+            0.4,
+            0.42,
+            0.5
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "type": "MeshRenderer"
+        },
+        {
+          "shape": "box",
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "radius": 0.5,
+          "height": 2.0,
+          "offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "is_trigger": false,
+          "friction": 0.5,
+          "restitution": 0.0,
+          "layer": 1,
+          "mask": 4294967295,
+          "type": "ColliderComponent"
+        }
+      ]
+    },
+    {
+      "uid": "e03075146a31e419",
+      "name": "Wall East",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          15.5,
+          1.5,
+          0.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          3.0,
+          32.0
+        ]
+      },
+      "components": [
+        {
+          "mesh_ref": {
+            "guid": null,
+            "path": "cube"
+          },
+          "color": [
+            0.4,
+            0.42,
+            0.5
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "type": "MeshRenderer"
+        },
+        {
+          "shape": "box",
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "radius": 0.5,
+          "height": 2.0,
+          "offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "is_trigger": false,
+          "friction": 0.5,
+          "restitution": 0.0,
+          "layer": 1,
+          "mask": 4294967295,
+          "type": "ColliderComponent"
+        }
+      ]
+    },
+    {
+      "uid": "1255c059222f19fe",
+      "name": "Stair 1",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          2.299999952316284,
+          0.07500000298023224,
+          -9.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          0.6000000238418579,
+          0.15000000596046448,
+          3.0
+        ]
+      },
+      "components": [
+        {
+          "mesh_ref": {
+            "guid": null,
+            "path": "cube"
+          },
+          "color": [
+            0.7,
+            0.6,
+            0.45
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "type": "MeshRenderer"
+        },
+        {
+          "shape": "box",
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "radius": 0.5,
+          "height": 2.0,
+          "offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "is_trigger": false,
+          "friction": 0.5,
+          "restitution": 0.0,
+          "layer": 1,
+          "mask": 4294967295,
+          "type": "ColliderComponent"
+        }
+      ]
+    },
+    {
+      "uid": "e0f06e05ccb55615",
+      "name": "Stair 2",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          2.9000000953674316,
+          0.15000000596046448,
+          -9.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          0.6000000238418579,
+          0.30000001192092896,
+          3.0
+        ]
+      },
+      "components": [
+        {
+          "mesh_ref": {
+            "guid": null,
+            "path": "cube"
+          },
+          "color": [
+            0.7,
+            0.6,
+            0.45
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "type": "MeshRenderer"
+        },
+        {
+          "shape": "box",
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "radius": 0.5,
+          "height": 2.0,
+          "offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "is_trigger": false,
+          "friction": 0.5,
+          "restitution": 0.0,
+          "layer": 1,
+          "mask": 4294967295,
+          "type": "ColliderComponent"
+        }
+      ]
+    },
+    {
+      "uid": "366e30ef776a05e1",
+      "name": "Stair 3",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          3.5,
+          0.22499999403953552,
+          -9.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          0.6000000238418579,
+          0.44999998807907104,
+          3.0
+        ]
+      },
+      "components": [
+        {
+          "mesh_ref": {
+            "guid": null,
+            "path": "cube"
+          },
+          "color": [
+            0.7,
+            0.6,
+            0.45
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "type": "MeshRenderer"
+        },
+        {
+          "shape": "box",
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "radius": 0.5,
+          "height": 2.0,
+          "offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "is_trigger": false,
+          "friction": 0.5,
+          "restitution": 0.0,
+          "layer": 1,
+          "mask": 4294967295,
+          "type": "ColliderComponent"
+        }
+      ]
+    },
+    {
+      "uid": "caba2f4210df0453",
+      "name": "Stair 4",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          4.099999904632568,
+          0.30000001192092896,
+          -9.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          0.6000000238418579,
+          0.6000000238418579,
+          3.0
+        ]
+      },
+      "components": [
+        {
+          "mesh_ref": {
+            "guid": null,
+            "path": "cube"
+          },
+          "color": [
+            0.7,
+            0.6,
+            0.45
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "type": "MeshRenderer"
+        },
+        {
+          "shape": "box",
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "radius": 0.5,
+          "height": 2.0,
+          "offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "is_trigger": false,
+          "friction": 0.5,
+          "restitution": 0.0,
+          "layer": 1,
+          "mask": 4294967295,
+          "type": "ColliderComponent"
+        }
+      ]
+    },
+    {
+      "uid": "b8055273ec9c7585",
+      "name": "Stair 5",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          4.699999809265137,
+          0.375,
+          -9.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          0.6000000238418579,
+          0.75,
+          3.0
+        ]
+      },
+      "components": [
+        {
+          "mesh_ref": {
+            "guid": null,
+            "path": "cube"
+          },
+          "color": [
+            0.7,
+            0.6,
+            0.45
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "type": "MeshRenderer"
+        },
+        {
+          "shape": "box",
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "radius": 0.5,
+          "height": 2.0,
+          "offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "is_trigger": false,
+          "friction": 0.5,
+          "restitution": 0.0,
+          "layer": 1,
+          "mask": 4294967295,
+          "type": "ColliderComponent"
+        }
+      ]
+    },
+    {
+      "uid": "9c57f163b0b9f9b6",
+      "name": "Stair 6",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          5.300000190734863,
+          0.44999998807907104,
+          -9.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          0.6000000238418579,
+          0.8999999761581421,
+          3.0
+        ]
+      },
+      "components": [
+        {
+          "mesh_ref": {
+            "guid": null,
+            "path": "cube"
+          },
+          "color": [
+            0.7,
+            0.6,
+            0.45
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "type": "MeshRenderer"
+        },
+        {
+          "shape": "box",
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "radius": 0.5,
+          "height": 2.0,
+          "offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "is_trigger": false,
+          "friction": 0.5,
+          "restitution": 0.0,
+          "layer": 1,
+          "mask": 4294967295,
+          "type": "ColliderComponent"
+        }
+      ]
+    },
+    {
+      "uid": "a550878345762ea8",
+      "name": "Cover 1",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          -12.0,
+          0.75,
+          -4.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.5,
+          1.5,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "mesh_ref": {
+            "guid": null,
+            "path": "cube"
+          },
+          "color": [
+            0.5,
+            0.5,
+            0.6
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "type": "MeshRenderer"
+        },
+        {
+          "shape": "box",
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "radius": 0.5,
+          "height": 2.0,
+          "offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "is_trigger": false,
+          "friction": 0.5,
+          "restitution": 0.0,
+          "layer": 1,
+          "mask": 4294967295,
+          "type": "ColliderComponent"
+        }
+      ]
+    },
+    {
+      "uid": "29274f5aa78350e9",
+      "name": "Cover 2",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          -9.399999618530273,
+          0.75,
+          -4.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.5,
+          1.5,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "mesh_ref": {
+            "guid": null,
+            "path": "cube"
+          },
+          "color": [
+            0.5,
+            0.5,
+            0.6
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "type": "MeshRenderer"
+        },
+        {
+          "shape": "box",
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "radius": 0.5,
+          "height": 2.0,
+          "offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "is_trigger": false,
+          "friction": 0.5,
+          "restitution": 0.0,
+          "layer": 1,
+          "mask": 4294967295,
+          "type": "ColliderComponent"
+        }
+      ]
+    },
+    {
+      "uid": "de7ff41ff99c5777",
+      "name": "Cover 3",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          -6.800000190734863,
+          0.75,
+          -4.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.5,
+          1.5,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "mesh_ref": {
+            "guid": null,
+            "path": "cube"
+          },
+          "color": [
+            0.5,
+            0.5,
+            0.6
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "type": "MeshRenderer"
+        },
+        {
+          "shape": "box",
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "radius": 0.5,
+          "height": 2.0,
+          "offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "is_trigger": false,
+          "friction": 0.5,
+          "restitution": 0.0,
+          "layer": 1,
+          "mask": 4294967295,
+          "type": "ColliderComponent"
+        }
+      ]
+    },
+    {
+      "uid": "debcf21cd6b145d4",
+      "name": "Cover 4",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          -4.199999809265137,
+          0.75,
+          -4.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.5,
+          1.5,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "mesh_ref": {
+            "guid": null,
+            "path": "cube"
+          },
+          "color": [
+            0.5,
+            0.5,
+            0.6
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "type": "MeshRenderer"
+        },
+        {
+          "shape": "box",
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "radius": 0.5,
+          "height": 2.0,
+          "offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "is_trigger": false,
+          "friction": 0.5,
+          "restitution": 0.0,
+          "layer": 1,
+          "mask": 4294967295,
+          "type": "ColliderComponent"
+        }
+      ]
+    },
+    {
+      "uid": "ed4b4df282b9fefe",
+      "name": "Cover 5",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          -1.600000023841858,
+          0.75,
+          -4.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.5,
+          1.5,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "mesh_ref": {
+            "guid": null,
+            "path": "cube"
+          },
+          "color": [
+            0.5,
+            0.5,
+            0.6
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "type": "MeshRenderer"
+        },
+        {
+          "shape": "box",
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "radius": 0.5,
+          "height": 2.0,
+          "offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "is_trigger": false,
+          "friction": 0.5,
+          "restitution": 0.0,
+          "layer": 1,
+          "mask": 4294967295,
+          "type": "ColliderComponent"
+        }
+      ]
+    },
+    {
+      "uid": "706f6d9249567c60",
+      "name": "Cover 6",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          1.0,
+          0.75,
+          -4.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.5,
+          1.5,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "mesh_ref": {
+            "guid": null,
+            "path": "cube"
+          },
+          "color": [
+            0.5,
+            0.5,
+            0.6
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "type": "MeshRenderer"
+        },
+        {
+          "shape": "box",
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "radius": 0.5,
+          "height": 2.0,
+          "offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "is_trigger": false,
+          "friction": 0.5,
+          "restitution": 0.0,
+          "layer": 1,
+          "mask": 4294967295,
+          "type": "ColliderComponent"
+        }
+      ]
+    },
+    {
+      "uid": "fcb02efd2107fc97",
+      "name": "Cover 7",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          3.5999999046325684,
+          0.75,
+          -4.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.5,
+          1.5,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "mesh_ref": {
+            "guid": null,
+            "path": "cube"
+          },
+          "color": [
+            0.5,
+            0.5,
+            0.6
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "type": "MeshRenderer"
+        },
+        {
+          "shape": "box",
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "radius": 0.5,
+          "height": 2.0,
+          "offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "is_trigger": false,
+          "friction": 0.5,
+          "restitution": 0.0,
+          "layer": 1,
+          "mask": 4294967295,
+          "type": "ColliderComponent"
+        }
+      ]
+    },
+    {
+      "uid": "c28d14c183f61363",
+      "name": "Cover 8",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          6.199999809265137,
+          0.75,
+          -4.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.5,
+          1.5,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "mesh_ref": {
+            "guid": null,
+            "path": "cube"
+          },
+          "color": [
+            0.5,
+            0.5,
+            0.6
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "type": "MeshRenderer"
+        },
+        {
+          "shape": "box",
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "radius": 0.5,
+          "height": 2.0,
+          "offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "is_trigger": false,
+          "friction": 0.5,
+          "restitution": 0.0,
+          "layer": 1,
+          "mask": 4294967295,
+          "type": "ColliderComponent"
+        }
+      ]
+    },
+    {
+      "uid": "b5981fb8246e1e59",
+      "name": "Cover 9",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          8.800000190734863,
+          0.75,
+          -4.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.5,
+          1.5,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "mesh_ref": {
+            "guid": null,
+            "path": "cube"
+          },
+          "color": [
+            0.5,
+            0.5,
+            0.6
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "type": "MeshRenderer"
+        },
+        {
+          "shape": "box",
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "radius": 0.5,
+          "height": 2.0,
+          "offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "is_trigger": false,
+          "friction": 0.5,
+          "restitution": 0.0,
+          "layer": 1,
+          "mask": 4294967295,
+          "type": "ColliderComponent"
+        }
+      ]
+    },
+    {
+      "uid": "12f5b65acfadc88d",
+      "name": "Cover 10",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          11.399999618530273,
+          0.75,
+          -4.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.5,
+          1.5,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "mesh_ref": {
+            "guid": null,
+            "path": "cube"
+          },
+          "color": [
+            0.5,
+            0.5,
+            0.6
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "type": "MeshRenderer"
+        },
+        {
+          "shape": "box",
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "radius": 0.5,
+          "height": 2.0,
+          "offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "is_trigger": false,
+          "friction": 0.5,
+          "restitution": 0.0,
+          "layer": 1,
+          "mask": 4294967295,
+          "type": "ColliderComponent"
+        }
+      ]
+    },
+    {
+      "uid": "e78c248309b03267",
+      "name": "Prop 1",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          4.0,
+          0.5,
+          6.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "mesh_ref": {
+            "guid": null,
+            "path": "cube"
+          },
+          "color": [
+            0.85,
+            0.5,
+            0.2
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "type": "MeshRenderer"
+        },
+        {
+          "shape": "box",
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "radius": 0.5,
+          "height": 2.0,
+          "offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "is_trigger": false,
+          "friction": 0.6,
+          "restitution": 0.0,
+          "layer": 1,
+          "mask": 4294967295,
+          "type": "ColliderComponent"
+        },
+        {
+          "body_type": "dynamic",
+          "mass": 1.0,
+          "linear_damping": 0.05,
+          "angular_damping": 0.05,
+          "gravity_scale": 1.0,
+          "use_gravity": true,
+          "freeze_rotation": false,
+          "can_sleep": true,
+          "type": "RigidBodyComponent"
+        }
+      ]
+    },
+    {
+      "uid": "d5072d462eb8795f",
+      "name": "Prop 2",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          5.400000095367432,
+          0.5,
+          6.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "mesh_ref": {
+            "guid": null,
+            "path": "cube"
+          },
+          "color": [
+            0.85,
+            0.5,
+            0.2
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "type": "MeshRenderer"
+        },
+        {
+          "shape": "box",
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "radius": 0.5,
+          "height": 2.0,
+          "offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "is_trigger": false,
+          "friction": 0.6,
+          "restitution": 0.0,
+          "layer": 1,
+          "mask": 4294967295,
+          "type": "ColliderComponent"
+        },
+        {
+          "body_type": "dynamic",
+          "mass": 1.0,
+          "linear_damping": 0.05,
+          "angular_damping": 0.05,
+          "gravity_scale": 1.0,
+          "use_gravity": true,
+          "freeze_rotation": false,
+          "can_sleep": true,
+          "type": "RigidBodyComponent"
+        }
+      ]
+    },
+    {
+      "uid": "c71a46568a594bb8",
+      "name": "Prop 3",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          6.800000190734863,
+          0.5,
+          6.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "mesh_ref": {
+            "guid": null,
+            "path": "cube"
+          },
+          "color": [
+            0.85,
+            0.5,
+            0.2
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "type": "MeshRenderer"
+        },
+        {
+          "shape": "box",
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "radius": 0.5,
+          "height": 2.0,
+          "offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "is_trigger": false,
+          "friction": 0.6,
+          "restitution": 0.0,
+          "layer": 1,
+          "mask": 4294967295,
+          "type": "ColliderComponent"
+        },
+        {
+          "body_type": "dynamic",
+          "mass": 1.0,
+          "linear_damping": 0.05,
+          "angular_damping": 0.05,
+          "gravity_scale": 1.0,
+          "use_gravity": true,
+          "freeze_rotation": false,
+          "can_sleep": true,
+          "type": "RigidBodyComponent"
+        }
+      ]
+    },
+    {
+      "uid": "90e79777ecaf1e76",
+      "name": "Prop 4",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          8.199999809265137,
+          0.5,
+          6.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "mesh_ref": {
+            "guid": null,
+            "path": "cube"
+          },
+          "color": [
+            0.85,
+            0.5,
+            0.2
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "type": "MeshRenderer"
+        },
+        {
+          "shape": "box",
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "radius": 0.5,
+          "height": 2.0,
+          "offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "is_trigger": false,
+          "friction": 0.6,
+          "restitution": 0.0,
+          "layer": 1,
+          "mask": 4294967295,
+          "type": "ColliderComponent"
+        },
+        {
+          "body_type": "dynamic",
+          "mass": 1.0,
+          "linear_damping": 0.05,
+          "angular_damping": 0.05,
+          "gravity_scale": 1.0,
+          "use_gravity": true,
+          "freeze_rotation": false,
+          "can_sleep": true,
+          "type": "RigidBodyComponent"
+        }
+      ]
+    },
+    {
+      "uid": "893e3c604777b710",
+      "name": "Prop 5",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          9.600000381469727,
+          0.5,
+          6.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "mesh_ref": {
+            "guid": null,
+            "path": "cube"
+          },
+          "color": [
+            0.85,
+            0.5,
+            0.2
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "type": "MeshRenderer"
+        },
+        {
+          "shape": "box",
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "radius": 0.5,
+          "height": 2.0,
+          "offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "is_trigger": false,
+          "friction": 0.6,
+          "restitution": 0.0,
+          "layer": 1,
+          "mask": 4294967295,
+          "type": "ColliderComponent"
+        },
+        {
+          "body_type": "dynamic",
+          "mass": 1.0,
+          "linear_damping": 0.05,
+          "angular_damping": 0.05,
+          "gravity_scale": 1.0,
+          "use_gravity": true,
+          "freeze_rotation": false,
+          "can_sleep": true,
+          "type": "RigidBodyComponent"
+        }
+      ]
+    },
+    {
+      "uid": "da8199f49e380f61",
+      "name": "Prop 6",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          4.0,
+          1.600000023841858,
+          6.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "mesh_ref": {
+            "guid": null,
+            "path": "cube"
+          },
+          "color": [
+            0.85,
+            0.5,
+            0.2
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "type": "MeshRenderer"
+        },
+        {
+          "shape": "box",
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "radius": 0.5,
+          "height": 2.0,
+          "offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "is_trigger": false,
+          "friction": 0.6,
+          "restitution": 0.0,
+          "layer": 1,
+          "mask": 4294967295,
+          "type": "ColliderComponent"
+        },
+        {
+          "body_type": "dynamic",
+          "mass": 1.0,
+          "linear_damping": 0.05,
+          "angular_damping": 0.05,
+          "gravity_scale": 1.0,
+          "use_gravity": true,
+          "freeze_rotation": false,
+          "can_sleep": true,
+          "type": "RigidBodyComponent"
+        }
+      ]
+    },
+    {
+      "uid": "435e14ab82d8ddcc",
+      "name": "Prop 7",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          5.400000095367432,
+          1.600000023841858,
+          6.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "mesh_ref": {
+            "guid": null,
+            "path": "cube"
+          },
+          "color": [
+            0.85,
+            0.5,
+            0.2
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "type": "MeshRenderer"
+        },
+        {
+          "shape": "box",
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "radius": 0.5,
+          "height": 2.0,
+          "offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "is_trigger": false,
+          "friction": 0.6,
+          "restitution": 0.0,
+          "layer": 1,
+          "mask": 4294967295,
+          "type": "ColliderComponent"
+        },
+        {
+          "body_type": "dynamic",
+          "mass": 1.0,
+          "linear_damping": 0.05,
+          "angular_damping": 0.05,
+          "gravity_scale": 1.0,
+          "use_gravity": true,
+          "freeze_rotation": false,
+          "can_sleep": true,
+          "type": "RigidBodyComponent"
+        }
+      ]
+    },
+    {
+      "uid": "de858f3c94b0009e",
+      "name": "Prop 8",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          6.800000190734863,
+          1.600000023841858,
+          6.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "mesh_ref": {
+            "guid": null,
+            "path": "cube"
+          },
+          "color": [
+            0.85,
+            0.5,
+            0.2
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "type": "MeshRenderer"
+        },
+        {
+          "shape": "box",
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "radius": 0.5,
+          "height": 2.0,
+          "offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "is_trigger": false,
+          "friction": 0.6,
+          "restitution": 0.0,
+          "layer": 1,
+          "mask": 4294967295,
+          "type": "ColliderComponent"
+        },
+        {
+          "body_type": "dynamic",
+          "mass": 1.0,
+          "linear_damping": 0.05,
+          "angular_damping": 0.05,
+          "gravity_scale": 1.0,
+          "use_gravity": true,
+          "freeze_rotation": false,
+          "can_sleep": true,
+          "type": "RigidBodyComponent"
+        }
+      ]
+    },
+    {
+      "uid": "945e8a3b556c8463",
+      "name": "Prop 9",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          8.199999809265137,
+          1.600000023841858,
+          6.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "mesh_ref": {
+            "guid": null,
+            "path": "cube"
+          },
+          "color": [
+            0.85,
+            0.5,
+            0.2
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "type": "MeshRenderer"
+        },
+        {
+          "shape": "box",
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "radius": 0.5,
+          "height": 2.0,
+          "offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "is_trigger": false,
+          "friction": 0.6,
+          "restitution": 0.0,
+          "layer": 1,
+          "mask": 4294967295,
+          "type": "ColliderComponent"
+        },
+        {
+          "body_type": "dynamic",
+          "mass": 1.0,
+          "linear_damping": 0.05,
+          "angular_damping": 0.05,
+          "gravity_scale": 1.0,
+          "use_gravity": true,
+          "freeze_rotation": false,
+          "can_sleep": true,
+          "type": "RigidBodyComponent"
+        }
+      ]
+    },
+    {
+      "uid": "23bc661e9c47dc6f",
+      "name": "Prop 10",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          9.600000381469727,
+          1.600000023841858,
+          6.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "mesh_ref": {
+            "guid": null,
+            "path": "cube"
+          },
+          "color": [
+            0.85,
+            0.5,
+            0.2
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "type": "MeshRenderer"
+        },
+        {
+          "shape": "box",
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "radius": 0.5,
+          "height": 2.0,
+          "offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "is_trigger": false,
+          "friction": 0.6,
+          "restitution": 0.0,
+          "layer": 1,
+          "mask": 4294967295,
+          "type": "ColliderComponent"
+        },
+        {
+          "body_type": "dynamic",
+          "mass": 1.0,
+          "linear_damping": 0.05,
+          "angular_damping": 0.05,
+          "gravity_scale": 1.0,
+          "use_gravity": true,
+          "freeze_rotation": false,
+          "can_sleep": true,
+          "type": "RigidBodyComponent"
+        }
+      ]
+    },
+    {
+      "uid": "af068e949ba8ac47",
+      "name": "Prop 11",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          4.0,
+          2.700000047683716,
+          6.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "mesh_ref": {
+            "guid": null,
+            "path": "cube"
+          },
+          "color": [
+            0.85,
+            0.5,
+            0.2
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "type": "MeshRenderer"
+        },
+        {
+          "shape": "box",
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "radius": 0.5,
+          "height": 2.0,
+          "offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "is_trigger": false,
+          "friction": 0.6,
+          "restitution": 0.0,
+          "layer": 1,
+          "mask": 4294967295,
+          "type": "ColliderComponent"
+        },
+        {
+          "body_type": "dynamic",
+          "mass": 1.0,
+          "linear_damping": 0.05,
+          "angular_damping": 0.05,
+          "gravity_scale": 1.0,
+          "use_gravity": true,
+          "freeze_rotation": false,
+          "can_sleep": true,
+          "type": "RigidBodyComponent"
+        }
+      ]
+    },
+    {
+      "uid": "51b15d5c7fa4b6b0",
+      "name": "Prop 12",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          5.400000095367432,
+          2.700000047683716,
+          6.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "mesh_ref": {
+            "guid": null,
+            "path": "cube"
+          },
+          "color": [
+            0.85,
+            0.5,
+            0.2
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "type": "MeshRenderer"
+        },
+        {
+          "shape": "box",
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "radius": 0.5,
+          "height": 2.0,
+          "offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "is_trigger": false,
+          "friction": 0.6,
+          "restitution": 0.0,
+          "layer": 1,
+          "mask": 4294967295,
+          "type": "ColliderComponent"
+        },
+        {
+          "body_type": "dynamic",
+          "mass": 1.0,
+          "linear_damping": 0.05,
+          "angular_damping": 0.05,
+          "gravity_scale": 1.0,
+          "use_gravity": true,
+          "freeze_rotation": false,
+          "can_sleep": true,
+          "type": "RigidBodyComponent"
+        }
+      ]
+    },
+    {
+      "uid": "547ccaa4dcc6489a",
+      "name": "Prop 13",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          6.800000190734863,
+          2.700000047683716,
+          6.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "mesh_ref": {
+            "guid": null,
+            "path": "cube"
+          },
+          "color": [
+            0.85,
+            0.5,
+            0.2
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "type": "MeshRenderer"
+        },
+        {
+          "shape": "box",
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "radius": 0.5,
+          "height": 2.0,
+          "offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "is_trigger": false,
+          "friction": 0.6,
+          "restitution": 0.0,
+          "layer": 1,
+          "mask": 4294967295,
+          "type": "ColliderComponent"
+        },
+        {
+          "body_type": "dynamic",
+          "mass": 1.0,
+          "linear_damping": 0.05,
+          "angular_damping": 0.05,
+          "gravity_scale": 1.0,
+          "use_gravity": true,
+          "freeze_rotation": false,
+          "can_sleep": true,
+          "type": "RigidBodyComponent"
+        }
+      ]
+    },
+    {
+      "uid": "87a0df5a98f94e4a",
+      "name": "Prop 14",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          8.199999809265137,
+          2.700000047683716,
+          6.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "mesh_ref": {
+            "guid": null,
+            "path": "cube"
+          },
+          "color": [
+            0.85,
+            0.5,
+            0.2
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "type": "MeshRenderer"
+        },
+        {
+          "shape": "box",
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "radius": 0.5,
+          "height": 2.0,
+          "offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "is_trigger": false,
+          "friction": 0.6,
+          "restitution": 0.0,
+          "layer": 1,
+          "mask": 4294967295,
+          "type": "ColliderComponent"
+        },
+        {
+          "body_type": "dynamic",
+          "mass": 1.0,
+          "linear_damping": 0.05,
+          "angular_damping": 0.05,
+          "gravity_scale": 1.0,
+          "use_gravity": true,
+          "freeze_rotation": false,
+          "can_sleep": true,
+          "type": "RigidBodyComponent"
+        }
+      ]
+    },
+    {
+      "uid": "a0e7642f727ac903",
+      "name": "Prop 15",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          9.600000381469727,
+          2.700000047683716,
+          6.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "mesh_ref": {
+            "guid": null,
+            "path": "cube"
+          },
+          "color": [
+            0.85,
+            0.5,
+            0.2
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "type": "MeshRenderer"
+        },
+        {
+          "shape": "box",
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "radius": 0.5,
+          "height": 2.0,
+          "offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "is_trigger": false,
+          "friction": 0.6,
+          "restitution": 0.0,
+          "layer": 1,
+          "mask": 4294967295,
+          "type": "ColliderComponent"
+        },
+        {
+          "body_type": "dynamic",
+          "mass": 1.0,
+          "linear_damping": 0.05,
+          "angular_damping": 0.05,
+          "gravity_scale": 1.0,
+          "use_gravity": true,
+          "freeze_rotation": false,
+          "can_sleep": true,
+          "type": "RigidBodyComponent"
+        }
+      ]
+    },
+    {
+      "uid": "595b3c64e41cc0a0",
+      "name": "Enemy 1",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          -2.7980542182922363,
+          2.834907054901123,
+          5.986686706542969
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          0.800000011920929,
+          1.7999999523162842,
+          0.800000011920929
+        ]
+      },
+      "components": [
+        {
+          "mesh_ref": {
+            "guid": null,
+            "path": "cylinder"
+          },
+          "color": [
+            0.8,
+            0.2,
+            0.2
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "type": "MeshRenderer"
+        },
+        {
+          "shape": "capsule",
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "radius": 0.4,
+          "height": 1.8,
+          "offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "is_trigger": false,
+          "friction": 0.5,
+          "restitution": 0.0,
+          "layer": 1,
+          "mask": 4294967295,
+          "type": "ColliderComponent"
+        },
+        {
+          "body_type": "kinematic",
+          "mass": 1.0,
+          "linear_damping": 0.05,
+          "angular_damping": 0.05,
+          "gravity_scale": 1.0,
+          "use_gravity": true,
+          "freeze_rotation": false,
+          "can_sleep": true,
+          "type": "RigidBodyComponent"
+        },
+        {
+          "auto_start": true,
+          "path": "Assets/Scripts/patrol.py",
+          "type": "ScriptComponent"
+        }
+      ]
+    },
+    {
+      "uid": "49998869cf20665b",
+      "name": "Enemy 2",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          -4.0,
+          0.8999999761581421,
+          2.1300134658813477
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          0.800000011920929,
+          1.7999999523162842,
+          0.800000011920929
+        ]
+      },
+      "components": [
+        {
+          "mesh_ref": {
+            "guid": null,
+            "path": "cylinder"
+          },
+          "color": [
+            0.8,
+            0.2,
+            0.2
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "type": "MeshRenderer"
+        },
+        {
+          "shape": "capsule",
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "radius": 0.4,
+          "height": 1.8,
+          "offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "is_trigger": false,
+          "friction": 0.5,
+          "restitution": 0.0,
+          "layer": 1,
+          "mask": 4294967295,
+          "type": "ColliderComponent"
+        },
+        {
+          "body_type": "kinematic",
+          "mass": 1.0,
+          "linear_damping": 0.05,
+          "angular_damping": 0.05,
+          "gravity_scale": 1.0,
+          "use_gravity": true,
+          "freeze_rotation": false,
+          "can_sleep": true,
+          "type": "RigidBodyComponent"
+        },
+        {
+          "auto_start": true,
+          "path": "Assets/Scripts/patrol.py",
+          "fields": {
+            "OMEGA": 0.4,
+            "AMPLITUDE": 9.8
+          },
+          "type": "ScriptComponent"
+        }
+      ]
+    },
+    {
+      "uid": "68d00e2276d02420",
+      "name": "Enemy 3",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          0.0,
+          0.8999999761581421,
+          8.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          0.800000011920929,
+          1.7999999523162842,
+          0.800000011920929
+        ]
+      },
+      "components": [
+        {
+          "mesh_ref": {
+            "guid": null,
+            "path": "cylinder"
+          },
+          "color": [
+            0.8,
+            0.2,
+            0.2
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "type": "MeshRenderer"
+        },
+        {
+          "shape": "capsule",
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "radius": 0.4,
+          "height": 1.8,
+          "offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "is_trigger": false,
+          "friction": 0.5,
+          "restitution": 0.0,
+          "layer": 1,
+          "mask": 4294967295,
+          "type": "ColliderComponent"
+        },
+        {
+          "body_type": "kinematic",
+          "mass": 1.0,
+          "linear_damping": 0.05,
+          "angular_damping": 0.05,
+          "gravity_scale": 1.0,
+          "use_gravity": true,
+          "freeze_rotation": false,
+          "can_sleep": true,
+          "type": "RigidBodyComponent"
+        },
+        {
+          "auto_start": true,
+          "path": "Assets/Scripts/patrol.py",
+          "type": "ScriptComponent"
+        }
+      ]
+    },
+    {
+      "uid": "e50fd8672c4816cc",
+      "name": "Enemy 4",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          4.0,
+          0.8999999761581421,
+          8.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          0.800000011920929,
+          1.7999999523162842,
+          0.800000011920929
+        ]
+      },
+      "components": [
+        {
+          "mesh_ref": {
+            "guid": null,
+            "path": "cylinder"
+          },
+          "color": [
+            0.8,
+            0.2,
+            0.2
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "type": "MeshRenderer"
+        },
+        {
+          "shape": "capsule",
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "radius": 0.4,
+          "height": 1.8,
+          "offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "is_trigger": false,
+          "friction": 0.5,
+          "restitution": 0.0,
+          "layer": 1,
+          "mask": 4294967295,
+          "type": "ColliderComponent"
+        },
+        {
+          "body_type": "kinematic",
+          "mass": 1.0,
+          "linear_damping": 0.05,
+          "angular_damping": 0.05,
+          "gravity_scale": 1.0,
+          "use_gravity": true,
+          "freeze_rotation": false,
+          "can_sleep": true,
+          "type": "RigidBodyComponent"
+        },
+        {
+          "auto_start": true,
+          "path": "Assets/Scripts/patrol.py",
+          "type": "ScriptComponent"
+        }
+      ]
+    },
+    {
+      "uid": "5172ce964d66497f",
+      "name": "Enemy 5",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          8.0,
+          0.8999999761581421,
+          8.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          0.800000011920929,
+          1.7999999523162842,
+          0.800000011920929
+        ]
+      },
+      "components": [
+        {
+          "mesh_ref": {
+            "guid": null,
+            "path": "cylinder"
+          },
+          "color": [
+            0.8,
+            0.2,
+            0.2
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "type": "MeshRenderer"
+        },
+        {
+          "shape": "capsule",
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "radius": 0.4,
+          "height": 1.8,
+          "offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "is_trigger": false,
+          "friction": 0.5,
+          "restitution": 0.0,
+          "layer": 1,
+          "mask": 4294967295,
+          "type": "ColliderComponent"
+        },
+        {
+          "body_type": "kinematic",
+          "mass": 1.0,
+          "linear_damping": 0.05,
+          "angular_damping": 0.05,
+          "gravity_scale": 1.0,
+          "use_gravity": true,
+          "freeze_rotation": false,
+          "can_sleep": true,
+          "type": "RigidBodyComponent"
+        },
+        {
+          "auto_start": true,
+          "path": "Assets/Scripts/patrol.py",
+          "type": "ScriptComponent"
+        }
+      ]
+    },
+    {
+      "uid": "b59fb38010b385cf",
+      "name": "Enemy 6",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          -8.0,
+          0.8999999761581421,
+          9.199999809265137
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          0.800000011920929,
+          1.7999999523162842,
+          0.800000011920929
+        ]
+      },
+      "components": [
+        {
+          "mesh_ref": {
+            "guid": null,
+            "path": "cylinder"
+          },
+          "color": [
+            0.8,
+            0.2,
+            0.2
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "type": "MeshRenderer"
+        },
+        {
+          "shape": "capsule",
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "radius": 0.4,
+          "height": 1.8,
+          "offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "is_trigger": false,
+          "friction": 0.5,
+          "restitution": 0.0,
+          "layer": 1,
+          "mask": 4294967295,
+          "type": "ColliderComponent"
+        },
+        {
+          "body_type": "kinematic",
+          "mass": 1.0,
+          "linear_damping": 0.05,
+          "angular_damping": 0.05,
+          "gravity_scale": 1.0,
+          "use_gravity": true,
+          "freeze_rotation": false,
+          "can_sleep": true,
+          "type": "RigidBodyComponent"
+        },
+        {
+          "auto_start": true,
+          "path": "Assets/Scripts/patrol.py",
+          "fields": {
+            "OMEGA": 1.7,
+            "AMPLITUDE": 3.7
+          },
+          "type": "ScriptComponent"
+        }
+      ]
+    },
+    {
+      "uid": "4340d5044a5f9c3c",
+      "name": "Enemy 7",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          -4.0,
+          0.8999999761581421,
+          9.199999809265137
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          0.800000011920929,
+          1.7999999523162842,
+          0.800000011920929
+        ]
+      },
+      "components": [
+        {
+          "mesh_ref": {
+            "guid": null,
+            "path": "cylinder"
+          },
+          "color": [
+            0.8,
+            0.2,
+            0.2
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "type": "MeshRenderer"
+        },
+        {
+          "shape": "capsule",
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "radius": 0.4,
+          "height": 1.8,
+          "offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "is_trigger": false,
+          "friction": 0.5,
+          "restitution": 0.0,
+          "layer": 1,
+          "mask": 4294967295,
+          "type": "ColliderComponent"
+        },
+        {
+          "body_type": "kinematic",
+          "mass": 1.0,
+          "linear_damping": 0.05,
+          "angular_damping": 0.05,
+          "gravity_scale": 1.0,
+          "use_gravity": true,
+          "freeze_rotation": false,
+          "can_sleep": true,
+          "type": "RigidBodyComponent"
+        },
+        {
+          "auto_start": true,
+          "path": "Assets/Scripts/patrol.py",
+          "type": "ScriptComponent"
+        }
+      ]
+    },
+    {
+      "uid": "e6b0e28b854a8738",
+      "name": "Enemy 8",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          0.0,
+          0.8999999761581421,
+          9.199999809265137
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          0.800000011920929,
+          1.7999999523162842,
+          0.800000011920929
+        ]
+      },
+      "components": [
+        {
+          "mesh_ref": {
+            "guid": null,
+            "path": "cylinder"
+          },
+          "color": [
+            0.8,
+            0.2,
+            0.2
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "type": "MeshRenderer"
+        },
+        {
+          "shape": "capsule",
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "radius": 0.4,
+          "height": 1.8,
+          "offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "is_trigger": false,
+          "friction": 0.5,
+          "restitution": 0.0,
+          "layer": 1,
+          "mask": 4294967295,
+          "type": "ColliderComponent"
+        },
+        {
+          "body_type": "kinematic",
+          "mass": 1.0,
+          "linear_damping": 0.05,
+          "angular_damping": 0.05,
+          "gravity_scale": 1.0,
+          "use_gravity": true,
+          "freeze_rotation": false,
+          "can_sleep": true,
+          "type": "RigidBodyComponent"
+        },
+        {
+          "auto_start": true,
+          "path": "Assets/Scripts/patrol.py",
+          "type": "ScriptComponent"
+        }
+      ]
+    },
+    {
+      "uid": "31a5d747a8e7b777",
+      "name": "Enemy 9",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          4.0,
+          0.8999999761581421,
+          9.199999809265137
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          0.800000011920929,
+          1.7999999523162842,
+          0.800000011920929
+        ]
+      },
+      "components": [
+        {
+          "mesh_ref": {
+            "guid": null,
+            "path": "cylinder"
+          },
+          "color": [
+            0.8,
+            0.2,
+            0.2
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "type": "MeshRenderer"
+        },
+        {
+          "shape": "capsule",
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "radius": 0.4,
+          "height": 1.8,
+          "offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "is_trigger": false,
+          "friction": 0.5,
+          "restitution": 0.0,
+          "layer": 1,
+          "mask": 4294967295,
+          "type": "ColliderComponent"
+        },
+        {
+          "body_type": "kinematic",
+          "mass": 1.0,
+          "linear_damping": 0.05,
+          "angular_damping": 0.05,
+          "gravity_scale": 1.0,
+          "use_gravity": true,
+          "freeze_rotation": false,
+          "can_sleep": true,
+          "type": "RigidBodyComponent"
+        },
+        {
+          "auto_start": true,
+          "path": "Assets/Scripts/patrol.py",
+          "type": "ScriptComponent"
+        }
+      ]
+    },
+    {
+      "uid": "837726adb027d319",
+      "name": "Enemy 10",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          8.0,
+          0.8999999761581421,
+          9.199999809265137
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          0.800000011920929,
+          1.7999999523162842,
+          0.800000011920929
+        ]
+      },
+      "components": [
+        {
+          "mesh_ref": {
+            "guid": null,
+            "path": "cylinder"
+          },
+          "color": [
+            0.8,
+            0.2,
+            0.2
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "type": "MeshRenderer"
+        },
+        {
+          "shape": "capsule",
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "radius": 0.4,
+          "height": 1.8,
+          "offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "is_trigger": false,
+          "friction": 0.5,
+          "restitution": 0.0,
+          "layer": 1,
+          "mask": 4294967295,
+          "type": "ColliderComponent"
+        },
+        {
+          "body_type": "kinematic",
+          "mass": 1.0,
+          "linear_damping": 0.05,
+          "angular_damping": 0.05,
+          "gravity_scale": 1.0,
+          "use_gravity": true,
+          "freeze_rotation": false,
+          "can_sleep": true,
+          "type": "RigidBodyComponent"
+        },
+        {
+          "auto_start": true,
+          "path": "Assets/Scripts/patrol.py",
+          "type": "ScriptComponent"
+        }
+      ]
+    },
+    {
+      "uid": "8851f74fa3c02729",
+      "name": "Enemy 11",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          -8.0,
+          0.8999999761581421,
+          10.399999618530273
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          0.800000011920929,
+          1.7999999523162842,
+          0.800000011920929
+        ]
+      },
+      "components": [
+        {
+          "mesh_ref": {
+            "guid": null,
+            "path": "cylinder"
+          },
+          "color": [
+            0.8,
+            0.2,
+            0.2
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "type": "MeshRenderer"
+        },
+        {
+          "shape": "capsule",
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "radius": 0.4,
+          "height": 1.8,
+          "offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "is_trigger": false,
+          "friction": 0.5,
+          "restitution": 0.0,
+          "layer": 1,
+          "mask": 4294967295,
+          "type": "ColliderComponent"
+        },
+        {
+          "body_type": "kinematic",
+          "mass": 1.0,
+          "linear_damping": 0.05,
+          "angular_damping": 0.05,
+          "gravity_scale": 1.0,
+          "use_gravity": true,
+          "freeze_rotation": false,
+          "can_sleep": true,
+          "type": "RigidBodyComponent"
+        },
+        {
+          "auto_start": true,
+          "path": "Assets/Scripts/patrol.py",
+          "type": "ScriptComponent"
+        }
+      ]
+    },
+    {
+      "uid": "a2a5a4cb53687839",
+      "name": "Enemy 12",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          -4.0,
+          0.8999999761581421,
+          10.399999618530273
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          0.800000011920929,
+          1.7999999523162842,
+          0.800000011920929
+        ]
+      },
+      "components": [
+        {
+          "mesh_ref": {
+            "guid": null,
+            "path": "cylinder"
+          },
+          "color": [
+            0.8,
+            0.2,
+            0.2
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "type": "MeshRenderer"
+        },
+        {
+          "shape": "capsule",
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "radius": 0.4,
+          "height": 1.8,
+          "offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "is_trigger": false,
+          "friction": 0.5,
+          "restitution": 0.0,
+          "layer": 1,
+          "mask": 4294967295,
+          "type": "ColliderComponent"
+        },
+        {
+          "body_type": "kinematic",
+          "mass": 1.0,
+          "linear_damping": 0.05,
+          "angular_damping": 0.05,
+          "gravity_scale": 1.0,
+          "use_gravity": true,
+          "freeze_rotation": false,
+          "can_sleep": true,
+          "type": "RigidBodyComponent"
+        },
+        {
+          "auto_start": true,
+          "path": "Assets/Scripts/patrol.py",
+          "type": "ScriptComponent"
+        }
+      ]
+    },
+    {
+      "uid": "3f9462e175846936",
+      "name": "Enemy 13",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          0.0,
+          0.8999999761581421,
+          10.399999618530273
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          0.800000011920929,
+          1.7999999523162842,
+          0.800000011920929
+        ]
+      },
+      "components": [
+        {
+          "mesh_ref": {
+            "guid": null,
+            "path": "cylinder"
+          },
+          "color": [
+            0.8,
+            0.2,
+            0.2
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "type": "MeshRenderer"
+        },
+        {
+          "shape": "capsule",
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "radius": 0.4,
+          "height": 1.8,
+          "offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "is_trigger": false,
+          "friction": 0.5,
+          "restitution": 0.0,
+          "layer": 1,
+          "mask": 4294967295,
+          "type": "ColliderComponent"
+        },
+        {
+          "body_type": "kinematic",
+          "mass": 1.0,
+          "linear_damping": 0.05,
+          "angular_damping": 0.05,
+          "gravity_scale": 1.0,
+          "use_gravity": true,
+          "freeze_rotation": false,
+          "can_sleep": true,
+          "type": "RigidBodyComponent"
+        },
+        {
+          "auto_start": true,
+          "path": "Assets/Scripts/patrol.py",
+          "type": "ScriptComponent"
+        }
+      ]
+    },
+    {
+      "uid": "7af0403e617118d0",
+      "name": "Enemy 14",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          4.0,
+          0.8999999761581421,
+          10.399999618530273
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          0.800000011920929,
+          1.7999999523162842,
+          0.800000011920929
+        ]
+      },
+      "components": [
+        {
+          "mesh_ref": {
+            "guid": null,
+            "path": "cylinder"
+          },
+          "color": [
+            0.8,
+            0.2,
+            0.2
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "type": "MeshRenderer"
+        },
+        {
+          "shape": "capsule",
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "radius": 0.4,
+          "height": 1.8,
+          "offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "is_trigger": false,
+          "friction": 0.5,
+          "restitution": 0.0,
+          "layer": 1,
+          "mask": 4294967295,
+          "type": "ColliderComponent"
+        },
+        {
+          "body_type": "kinematic",
+          "mass": 1.0,
+          "linear_damping": 0.05,
+          "angular_damping": 0.05,
+          "gravity_scale": 1.0,
+          "use_gravity": true,
+          "freeze_rotation": false,
+          "can_sleep": true,
+          "type": "RigidBodyComponent"
+        },
+        {
+          "auto_start": true,
+          "path": "Assets/Scripts/patrol.py",
+          "type": "ScriptComponent"
+        }
+      ]
+    },
+    {
+      "uid": "1e13e2330c91ec93",
+      "name": "Enemy 15",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          8.0,
+          0.8999999761581421,
+          10.399999618530273
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          0.800000011920929,
+          1.7999999523162842,
+          0.800000011920929
+        ]
+      },
+      "components": [
+        {
+          "mesh_ref": {
+            "guid": null,
+            "path": "cylinder"
+          },
+          "color": [
+            0.8,
+            0.2,
+            0.2
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "type": "MeshRenderer"
+        },
+        {
+          "shape": "capsule",
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "radius": 0.4,
+          "height": 1.8,
+          "offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "is_trigger": false,
+          "friction": 0.5,
+          "restitution": 0.0,
+          "layer": 1,
+          "mask": 4294967295,
+          "type": "ColliderComponent"
+        },
+        {
+          "body_type": "kinematic",
+          "mass": 1.0,
+          "linear_damping": 0.05,
+          "angular_damping": 0.05,
+          "gravity_scale": 1.0,
+          "use_gravity": true,
+          "freeze_rotation": false,
+          "can_sleep": true,
+          "type": "RigidBodyComponent"
+        },
+        {
+          "auto_start": true,
+          "path": "Assets/Scripts/patrol.py",
+          "type": "ScriptComponent"
+        }
+      ]
+    },
+    {
+      "uid": "a38a535c91a63341",
+      "name": "Enemy 16",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          -8.0,
+          0.8999999761581421,
+          11.600000381469727
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          0.800000011920929,
+          1.7999999523162842,
+          0.800000011920929
+        ]
+      },
+      "components": [
+        {
+          "mesh_ref": {
+            "guid": null,
+            "path": "cylinder"
+          },
+          "color": [
+            0.8,
+            0.2,
+            0.2
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "type": "MeshRenderer"
+        },
+        {
+          "shape": "capsule",
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "radius": 0.4,
+          "height": 1.8,
+          "offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "is_trigger": false,
+          "friction": 0.5,
+          "restitution": 0.0,
+          "layer": 1,
+          "mask": 4294967295,
+          "type": "ColliderComponent"
+        },
+        {
+          "body_type": "kinematic",
+          "mass": 1.0,
+          "linear_damping": 0.05,
+          "angular_damping": 0.05,
+          "gravity_scale": 1.0,
+          "use_gravity": true,
+          "freeze_rotation": false,
+          "can_sleep": true,
+          "type": "RigidBodyComponent"
+        },
+        {
+          "auto_start": true,
+          "path": "Assets/Scripts/patrol.py",
+          "type": "ScriptComponent"
+        }
+      ]
+    },
+    {
+      "uid": "ec84ce269ab8d320",
+      "name": "Enemy 17",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          -4.0,
+          0.8999999761581421,
+          11.600000381469727
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          0.800000011920929,
+          1.7999999523162842,
+          0.800000011920929
+        ]
+      },
+      "components": [
+        {
+          "mesh_ref": {
+            "guid": null,
+            "path": "cylinder"
+          },
+          "color": [
+            0.8,
+            0.2,
+            0.2
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "type": "MeshRenderer"
+        },
+        {
+          "shape": "capsule",
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "radius": 0.4,
+          "height": 1.8,
+          "offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "is_trigger": false,
+          "friction": 0.5,
+          "restitution": 0.0,
+          "layer": 1,
+          "mask": 4294967295,
+          "type": "ColliderComponent"
+        },
+        {
+          "body_type": "kinematic",
+          "mass": 1.0,
+          "linear_damping": 0.05,
+          "angular_damping": 0.05,
+          "gravity_scale": 1.0,
+          "use_gravity": true,
+          "freeze_rotation": false,
+          "can_sleep": true,
+          "type": "RigidBodyComponent"
+        },
+        {
+          "auto_start": true,
+          "path": "Assets/Scripts/patrol.py",
+          "type": "ScriptComponent"
+        }
+      ]
+    },
+    {
+      "uid": "1b593f96aafb687a",
+      "name": "Enemy 18",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          0.0,
+          0.8999999761581421,
+          11.600000381469727
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          0.800000011920929,
+          1.7999999523162842,
+          0.800000011920929
+        ]
+      },
+      "components": [
+        {
+          "mesh_ref": {
+            "guid": null,
+            "path": "cylinder"
+          },
+          "color": [
+            0.8,
+            0.2,
+            0.2
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "type": "MeshRenderer"
+        },
+        {
+          "shape": "capsule",
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "radius": 0.4,
+          "height": 1.8,
+          "offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "is_trigger": false,
+          "friction": 0.5,
+          "restitution": 0.0,
+          "layer": 1,
+          "mask": 4294967295,
+          "type": "ColliderComponent"
+        },
+        {
+          "body_type": "kinematic",
+          "mass": 1.0,
+          "linear_damping": 0.05,
+          "angular_damping": 0.05,
+          "gravity_scale": 1.0,
+          "use_gravity": true,
+          "freeze_rotation": false,
+          "can_sleep": true,
+          "type": "RigidBodyComponent"
+        },
+        {
+          "auto_start": true,
+          "path": "Assets/Scripts/patrol.py",
+          "type": "ScriptComponent"
+        }
+      ]
+    },
+    {
+      "uid": "5d56d900a48f0c0f",
+      "name": "Enemy 19",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          4.0,
+          0.8999999761581421,
+          11.600000381469727
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          0.800000011920929,
+          1.7999999523162842,
+          0.800000011920929
+        ]
+      },
+      "components": [
+        {
+          "mesh_ref": {
+            "guid": null,
+            "path": "cylinder"
+          },
+          "color": [
+            0.8,
+            0.2,
+            0.2
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "type": "MeshRenderer"
+        },
+        {
+          "shape": "capsule",
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "radius": 0.4,
+          "height": 1.8,
+          "offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "is_trigger": false,
+          "friction": 0.5,
+          "restitution": 0.0,
+          "layer": 1,
+          "mask": 4294967295,
+          "type": "ColliderComponent"
+        },
+        {
+          "body_type": "kinematic",
+          "mass": 1.0,
+          "linear_damping": 0.05,
+          "angular_damping": 0.05,
+          "gravity_scale": 1.0,
+          "use_gravity": true,
+          "freeze_rotation": false,
+          "can_sleep": true,
+          "type": "RigidBodyComponent"
+        },
+        {
+          "auto_start": true,
+          "path": "Assets/Scripts/patrol.py",
+          "type": "ScriptComponent"
+        }
+      ]
+    },
+    {
+      "uid": "94cc627c782b4236",
+      "name": "Enemy 20",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          8.0,
+          0.8999999761581421,
+          11.600000381469727
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          0.800000011920929,
+          1.7999999523162842,
+          0.800000011920929
+        ]
+      },
+      "components": [
+        {
+          "mesh_ref": {
+            "guid": null,
+            "path": "cylinder"
+          },
+          "color": [
+            0.8,
+            0.2,
+            0.2
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "type": "MeshRenderer"
+        },
+        {
+          "shape": "capsule",
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "radius": 0.4,
+          "height": 1.8,
+          "offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "is_trigger": false,
+          "friction": 0.5,
+          "restitution": 0.0,
+          "layer": 1,
+          "mask": 4294967295,
+          "type": "ColliderComponent"
+        },
+        {
+          "body_type": "kinematic",
+          "mass": 1.0,
+          "linear_damping": 0.05,
+          "angular_damping": 0.05,
+          "gravity_scale": 1.0,
+          "use_gravity": true,
+          "freeze_rotation": false,
+          "can_sleep": true,
+          "type": "RigidBodyComponent"
+        },
+        {
+          "auto_start": true,
+          "path": "Assets/Scripts/patrol.py",
+          "type": "ScriptComponent"
+        }
+      ]
+    },
+    {
+      "uid": "658d1c45c0da2a21",
+      "name": "Enemy 21",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          -8.0,
+          0.8999999761581421,
+          12.800000190734863
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          0.800000011920929,
+          1.7999999523162842,
+          0.800000011920929
+        ]
+      },
+      "components": [
+        {
+          "mesh_ref": {
+            "guid": null,
+            "path": "cylinder"
+          },
+          "color": [
+            0.8,
+            0.2,
+            0.2
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "type": "MeshRenderer"
+        },
+        {
+          "shape": "capsule",
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "radius": 0.4,
+          "height": 1.8,
+          "offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "is_trigger": false,
+          "friction": 0.5,
+          "restitution": 0.0,
+          "layer": 1,
+          "mask": 4294967295,
+          "type": "ColliderComponent"
+        },
+        {
+          "body_type": "kinematic",
+          "mass": 1.0,
+          "linear_damping": 0.05,
+          "angular_damping": 0.05,
+          "gravity_scale": 1.0,
+          "use_gravity": true,
+          "freeze_rotation": false,
+          "can_sleep": true,
+          "type": "RigidBodyComponent"
+        },
+        {
+          "auto_start": true,
+          "path": "Assets/Scripts/patrol.py",
+          "type": "ScriptComponent"
+        }
+      ]
+    },
+    {
+      "uid": "fc1da55e857100c0",
+      "name": "Enemy 22",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          -4.0,
+          0.8999999761581421,
+          12.800000190734863
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          0.800000011920929,
+          1.7999999523162842,
+          0.800000011920929
+        ]
+      },
+      "components": [
+        {
+          "mesh_ref": {
+            "guid": null,
+            "path": "cylinder"
+          },
+          "color": [
+            0.8,
+            0.2,
+            0.2
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "type": "MeshRenderer"
+        },
+        {
+          "shape": "capsule",
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "radius": 0.4,
+          "height": 1.8,
+          "offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "is_trigger": false,
+          "friction": 0.5,
+          "restitution": 0.0,
+          "layer": 1,
+          "mask": 4294967295,
+          "type": "ColliderComponent"
+        },
+        {
+          "body_type": "kinematic",
+          "mass": 1.0,
+          "linear_damping": 0.05,
+          "angular_damping": 0.05,
+          "gravity_scale": 1.0,
+          "use_gravity": true,
+          "freeze_rotation": false,
+          "can_sleep": true,
+          "type": "RigidBodyComponent"
+        },
+        {
+          "auto_start": true,
+          "path": "Assets/Scripts/patrol.py",
+          "type": "ScriptComponent"
+        }
+      ]
+    },
+    {
+      "uid": "e97018ac32e62d78",
+      "name": "Enemy 23",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          0.0,
+          0.8999999761581421,
+          12.800000190734863
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          0.800000011920929,
+          1.7999999523162842,
+          0.800000011920929
+        ]
+      },
+      "components": [
+        {
+          "mesh_ref": {
+            "guid": null,
+            "path": "cylinder"
+          },
+          "color": [
+            0.8,
+            0.2,
+            0.2
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "type": "MeshRenderer"
+        },
+        {
+          "shape": "capsule",
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "radius": 0.4,
+          "height": 1.8,
+          "offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "is_trigger": false,
+          "friction": 0.5,
+          "restitution": 0.0,
+          "layer": 1,
+          "mask": 4294967295,
+          "type": "ColliderComponent"
+        },
+        {
+          "body_type": "kinematic",
+          "mass": 1.0,
+          "linear_damping": 0.05,
+          "angular_damping": 0.05,
+          "gravity_scale": 1.0,
+          "use_gravity": true,
+          "freeze_rotation": false,
+          "can_sleep": true,
+          "type": "RigidBodyComponent"
+        },
+        {
+          "auto_start": true,
+          "path": "Assets/Scripts/patrol.py",
+          "type": "ScriptComponent"
+        }
+      ]
+    },
+    {
+      "uid": "91539682f798c154",
+      "name": "Enemy 24",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          4.0,
+          0.8999999761581421,
+          12.800000190734863
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          0.800000011920929,
+          1.7999999523162842,
+          0.800000011920929
+        ]
+      },
+      "components": [
+        {
+          "mesh_ref": {
+            "guid": null,
+            "path": "cylinder"
+          },
+          "color": [
+            0.8,
+            0.2,
+            0.2
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "type": "MeshRenderer"
+        },
+        {
+          "shape": "capsule",
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "radius": 0.4,
+          "height": 1.8,
+          "offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "is_trigger": false,
+          "friction": 0.5,
+          "restitution": 0.0,
+          "layer": 1,
+          "mask": 4294967295,
+          "type": "ColliderComponent"
+        },
+        {
+          "body_type": "kinematic",
+          "mass": 1.0,
+          "linear_damping": 0.05,
+          "angular_damping": 0.05,
+          "gravity_scale": 1.0,
+          "use_gravity": true,
+          "freeze_rotation": false,
+          "can_sleep": true,
+          "type": "RigidBodyComponent"
+        },
+        {
+          "auto_start": true,
+          "path": "Assets/Scripts/patrol.py",
+          "type": "ScriptComponent"
+        }
+      ]
+    },
+    {
+      "uid": "141a2cd39baadab3",
+      "name": "Enemy 25",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          8.0,
+          0.8999999761581421,
+          12.800000190734863
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          0.800000011920929,
+          1.7999999523162842,
+          0.800000011920929
+        ]
+      },
+      "components": [
+        {
+          "mesh_ref": {
+            "guid": null,
+            "path": "cylinder"
+          },
+          "color": [
+            0.8,
+            0.2,
+            0.2
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "type": "MeshRenderer"
+        },
+        {
+          "shape": "capsule",
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "radius": 0.4,
+          "height": 1.8,
+          "offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "is_trigger": false,
+          "friction": 0.5,
+          "restitution": 0.0,
+          "layer": 1,
+          "mask": 4294967295,
+          "type": "ColliderComponent"
+        },
+        {
+          "body_type": "kinematic",
+          "mass": 1.0,
+          "linear_damping": 0.05,
+          "angular_damping": 0.05,
+          "gravity_scale": 1.0,
+          "use_gravity": true,
+          "freeze_rotation": false,
+          "can_sleep": true,
+          "type": "RigidBodyComponent"
+        },
+        {
+          "auto_start": true,
+          "path": "Assets/Scripts/patrol.py",
+          "type": "ScriptComponent"
+        }
+      ]
+    },
+    {
+      "uid": "92bd8fce1e39b853",
+      "name": "Trigger 1",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          -8.0,
+          0.75,
+          9.5
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "shape": "box",
+          "size": [
+            3.0,
+            1.5,
+            3.0
+          ],
+          "radius": 0.5,
+          "height": 2.0,
+          "offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "is_trigger": true,
+          "friction": 0.5,
+          "restitution": 0.0,
+          "layer": 1,
+          "mask": 4294967295,
+          "type": "ColliderComponent"
+        }
+      ]
+    },
+    {
+      "uid": "5cbd83c6c342d683",
+      "name": "Trigger 2",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          -4.0,
+          0.75,
+          9.5
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "shape": "box",
+          "size": [
+            3.0,
+            1.5,
+            3.0
+          ],
+          "radius": 0.5,
+          "height": 2.0,
+          "offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "is_trigger": true,
+          "friction": 0.5,
+          "restitution": 0.0,
+          "layer": 1,
+          "mask": 4294967295,
+          "type": "ColliderComponent"
+        }
+      ]
+    },
+    {
+      "uid": "9f2b14ae5f1d9971",
+      "name": "Trigger 3",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          0.0,
+          0.75,
+          9.5
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "shape": "box",
+          "size": [
+            3.0,
+            1.5,
+            3.0
+          ],
+          "radius": 0.5,
+          "height": 2.0,
+          "offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "is_trigger": true,
+          "friction": 0.5,
+          "restitution": 0.0,
+          "layer": 1,
+          "mask": 4294967295,
+          "type": "ColliderComponent"
+        }
+      ]
+    },
+    {
+      "uid": "7e97243d175f1613",
+      "name": "Trigger 4",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          4.0,
+          0.75,
+          9.5
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "shape": "box",
+          "size": [
+            3.0,
+            1.5,
+            3.0
+          ],
+          "radius": 0.5,
+          "height": 2.0,
+          "offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "is_trigger": true,
+          "friction": 0.5,
+          "restitution": 0.0,
+          "layer": 1,
+          "mask": 4294967295,
+          "type": "ColliderComponent"
+        }
+      ]
+    },
+    {
+      "uid": "3a43dab3e93df896",
+      "name": "Trigger 5",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          8.0,
+          0.75,
+          9.5
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "shape": "box",
+          "size": [
+            3.0,
+            1.5,
+            3.0
+          ],
+          "radius": 0.5,
+          "height": 2.0,
+          "offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "is_trigger": true,
+          "friction": 0.5,
+          "restitution": 0.0,
+          "layer": 1,
+          "mask": 4294967295,
+          "type": "ColliderComponent"
+        }
+      ]
+    },
+    {
+      "uid": "de0a13a1959e69e2",
+      "name": "Player",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          -3.0,
+          3.220097780227661,
+          5.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "radius": 0.4,
+          "height": 1.8,
+          "step_offset": 0.3,
+          "slope_limit": 45.0,
+          "skin_width": 0.02,
+          "layer": 1,
+          "mask": 4294967295,
+          "move_speed": 4.5,
+          "sprint_multiplier": 1.6,
+          "jump_velocity": 5.0,
+          "use_gravity": true,
+          "gravity_scale": 1.0,
+          "ground_check_distance": 0.03,
+          "air_control": 0.3,
+          "snap_to_ground": true,
+          "alignment_to_ground": false,
+          "type": "CharacterControllerComponent"
+        },
+        {
+          "auto_start": true,
+          "path": "Assets/Scripts/player_controller.py",
+          "fields": {
+            "WALK_SPEED": 20.0
+          },
+          "type": "ScriptComponent"
+        },
+        {
+          "mesh_ref": {
+            "guid": null,
+            "path": "cube"
+          },
+          "color": [
+            0.82,
+            0.82,
+            0.86
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": false,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "type": "MeshRenderer"
+        }
+      ]
+    },
+    {
+      "uid": "619da84f5d609049",
+      "name": "Body",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": {
+        "uid": "de0a13a1959e69e2"
+      },
+      "transform": {
+        "position": [
+          -1.7380094528198242,
+          0.14992451667785645,
+          0.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          0.800000011920929,
+          1.7999999523162842,
+          0.800000011920929
+        ]
+      },
+      "components": [
+        {
+          "mesh_ref": {
+            "guid": null,
+            "path": "cylinder"
+          },
+          "color": [
+            0.95,
+            0.6,
+            0.15
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "type": "MeshRenderer"
+        }
+      ]
+    },
+    {
+      "uid": "9bfa2b269efe72d7",
+      "name": "Camera",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": {
+        "uid": "de0a13a1959e69e2"
+      },
+      "transform": {
+        "position": [
+          0.0,
+          4.0,
+          6.0
+        ],
+        "rotation": [
+          1.774416068542409e-17,
+          0.9570920467376709,
+          -0.28978416323661804,
+          5.860498539321846e-17
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "camera": {
+            "name": "Camera",
+            "mode": "perspective",
+            "fov": 55.0,
+            "near": 0.1,
+            "far": 500.0,
+            "aspect": 1.7777777777777777,
+            "aspect_mode": "viewport",
+            "ortho_height": 10.0,
+            "position": [
+              -3.0,
+              7.220097541809082,
+              11.0
+            ],
+            "rotation": [
+              1.7744160675002604e-17,
+              0.9570920193032662,
+              -0.28978417242147014,
+              5.860498470124468e-17
+            ],
+            "viewport_rect": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "clear_color": [
+              0.078,
+              0.075,
+              0.071,
+              1.0
+            ],
+            "clear_flags": [
+              "color",
+              "depth"
+            ],
+            "culling_mask": 4294967295,
+            "depth": 0,
+            "enabled": true
+          },
+          "local_offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "local_rotation": [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "follow_owner": true,
+          "type": "CameraComponent"
+        }
+      ]
+    },
+    {
+      "uid": "53a55a88141dd39d",
+      "name": "Cube",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          -2.636514663696289,
+          2.9111056327819824,
+          4.72692346572876
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "mesh_ref": {
+            "guid": null,
+            "path": "cube"
+          },
+          "color": [
+            0.87,
+            0.58,
+            0.24
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "type": "MeshRenderer"
+        }
+      ]
+    }
+  ]
+}

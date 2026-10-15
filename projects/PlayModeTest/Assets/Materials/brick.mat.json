@@ -1,0 +1,14 @@
+{
+  "name": "Brick",
+  "roughness": 0.9,
+  "uv_scale": [
+    4,
+    4
+  ],
+  "textures": {
+    "base_color": "../Textures/Bricks075A/Bricks075A_1K-JPG_Color.png",
+    "normal": "../Textures/Bricks075A/Bricks075A_1K-JPG_NormalGL.png",
+    "roughness": "../Textures/Bricks075A/Bricks075A_1K-JPG_Roughness.png",
+    "ao": "../Textures/Bricks075A/Bricks075A_1K-JPG_AmbientOcclusion.png"
+  }
+}

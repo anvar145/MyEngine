@@ -1,0 +1,835 @@
+{
+  "format": "myengine.scene",
+  "version": 1,
+  "name": "main",
+  "sky": {
+    "enabled": true,
+    "mode": "procedural",
+    "zenith_color": [
+      0.25,
+      0.45,
+      0.85
+    ],
+    "horizon_color": [
+      0.7,
+      0.8,
+      0.95
+    ],
+    "ground_color": [
+      0.2,
+      0.18,
+      0.15
+    ],
+    "sun_color": [
+      1.0,
+      0.95,
+      0.85
+    ],
+    "sun_size": 1.0,
+    "sun_glow": 20.0,
+    "exposure": 1.2,
+    "intensity": 1.0,
+    "texture_guid": null
+  },
+  "objects": [
+    {
+      "id": 1,
+      "name": "Camera",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          4.0,
+          3.0,
+          6.0
+        ],
+        "rotation": [
+          0.03908107057213783,
+          -0.948348343372345,
+          0.1290760040283203,
+          0.2871367633342743
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "camera": {
+            "name": "Camera",
+            "mode": "perspective",
+            "fov": 50.0,
+            "near": 0.1,
+            "far": 500.0,
+            "aspect": 1.7777777777777777,
+            "aspect_mode": "viewport",
+            "ortho_height": 10.0,
+            "position": [
+              4.0,
+              3.0,
+              6.0
+            ],
+            "rotation": [
+              -0.03908107021924993,
+              0.9483483273612437,
+              -0.12907600653599832,
+              -0.28713673481177593
+            ],
+            "viewport_rect": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "clear_color": [
+              0.078,
+              0.075,
+              0.071,
+              1.0
+            ],
+            "clear_flags": [
+              "color",
+              "depth"
+            ],
+            "culling_mask": 4294967295,
+            "depth": 0,
+            "enabled": true
+          },
+          "local_offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "local_rotation": [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "follow_owner": true,
+          "type": "CameraComponent"
+        },
+        {
+          "auto_start": true,
+          "path": "Assets/Scripts/orbit_camera.py",
+          "type": "ScriptComponent"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Sun",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          0.0,
+          6.0,
+          0.0
+        ],
+        "rotation": [
+          0.7363619804382324,
+          -0.33136287331581116,
+          0.0,
+          0.5898895859718323
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "light": {
+            "type": "directional",
+            "color": [
+              1.0,
+              0.93,
+              0.8
+            ],
+            "intensity": 1.3,
+            "enabled": true,
+            "cast_shadow": false,
+            "layers": 4294967295,
+            "name": "Directional Light",
+            "direction": [
+              -0.390935007234106,
+              -0.8687444895167187,
+              -0.30406057300019257
+            ],
+            "shadow_distance": 30.0,
+            "shadow_map_size": 512,
+            "shadow_bias": 0.0015,
+            "normal_bias": 0.02,
+            "ambient": 0.22
+          },
+          "local_offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "local_rotation": [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "follow_owner": true,
+          "type": "LightComponent"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Floor",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          14.0,
+          1.0,
+          14.0
+        ]
+      },
+      "components": [
+        {
+          "mesh": "plane",
+          "color": [
+            0.82,
+            0.82,
+            0.86
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "material_guid": "a6417f26e11c4790a29a6a4246800818",
+          "type": "MeshRenderer"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Bench (obj)",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          -3.0,
+          0.0,
+          0.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "mesh": "Models/bench.obj",
+          "color": [
+            0.82,
+            0.82,
+            0.86
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "type": "MeshRenderer",
+          "mesh_guid": "11f7fe45029f4c8a91ecb3d53118d599"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Chair (glb)",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          -1.0,
+          0.0,
+          0.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "mesh": "Models/chair.glb",
+          "color": [
+            0.82,
+            0.82,
+            0.86
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "type": "MeshRenderer",
+          "mesh_guid": "dbeb5e2478214507a3b306403f27460f"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Chair (fbx)",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "mesh": "Models/chair.fbx",
+          "color": [
+            0.82,
+            0.82,
+            0.86
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "type": "MeshRenderer",
+          "mesh_guid": "690a4909db424c5d8bae7bb777f0ccf9"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Checker cube",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          3.0,
+          0.5,
+          0.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "mesh": "cube",
+          "color": [
+            0.82,
+            0.82,
+            0.86
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "material_guid": "34ec645f00d74ba2913f8377e9aa2552",
+          "type": "MeshRenderer"
+        },
+        {
+          "auto_start": true,
+          "path": "Assets/Scripts/spinner.py",
+          "type": "ScriptComponent"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Metal sphere",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          0.0,
+          0.5,
+          -2.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "mesh": "sphere",
+          "color": [
+            0.82,
+            0.82,
+            0.86
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "material_guid": "fe5eb743bd0e44c59944f987b11d940f",
+          "type": "MeshRenderer"
+        },
+        {
+          "auto_start": true,
+          "path": "Assets/Scripts/collector.py",
+          "type": "ScriptComponent"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Bear sprite",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          0.0,
+          2.0,
+          -3.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "sprite": "bear_SE",
+          "atlas_guid": "c04616a23eec4ec5b8d72e3377066e1c",
+          "color": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "flip_x": false,
+          "flip_y": false,
+          "visible": true,
+          "type": "SpriteRenderer"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "name": "bench",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "mesh": "C:\\MyEngine\\projects\\PlayModeTest\\Assets\\Models\\bench.obj",
+          "color": [
+            0.72,
+            0.62,
+            0.86
+          ],
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "visible": true,
+          "cast_shadow": true,
+          "receive_shadow": true,
+          "type": "MeshRenderer",
+          "mesh_guid": "11f7fe45029f4c8a91ecb3d53118d599"
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "name": "HUD_Panel",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "enabled": true,
+          "anchor": "top_left",
+          "clip": false,
+          "opacity": 1.0,
+          "pivot": [
+            0.0,
+            0.0
+          ],
+          "position": [
+            16.0,
+            16.0
+          ],
+          "size": [
+            280.0,
+            84.0
+          ],
+          "sorting_layer": 0,
+          "visible": true,
+          "border_color": [
+            0.35,
+            0.5,
+            0.9,
+            1.0
+          ],
+          "border_width": 2.0,
+          "color": [
+            0.05,
+            0.07,
+            0.12,
+            0.75
+          ],
+          "type": "UIPanel"
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "name": "HUD_Health",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": 15,
+      "transform": {
+        "position": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "enabled": true,
+          "anchor": "top_left",
+          "clip": false,
+          "opacity": 1.0,
+          "pivot": [
+            0.0,
+            0.0
+          ],
+          "position": [
+            14.0,
+            10.0
+          ],
+          "size": [
+            250.0,
+            32.0
+          ],
+          "sorting_layer": 0,
+          "visible": true,
+          "text": {
+            "text": "Здоровье: 100",
+            "font_path": "",
+            "size_px": 28,
+            "color": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "alpha": 1.0,
+            "align": "left",
+            "vertical_align": "top",
+            "wrap_width": 0.0,
+            "line_spacing": 1.0,
+            "bold": false,
+            "italic": false,
+            "outline_color": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "outline_width": 0.0,
+            "billboard": false,
+            "units_per_pixel": 0.01,
+            "visible": true,
+            "sorting_layer": 0
+          },
+          "type": "UIText"
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "name": "HUD_Score",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": 15,
+      "transform": {
+        "position": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "enabled": true,
+          "anchor": "top_left",
+          "clip": false,
+          "opacity": 1.0,
+          "pivot": [
+            0.0,
+            0.0
+          ],
+          "position": [
+            14.0,
+            46.0
+          ],
+          "size": [
+            250.0,
+            32.0
+          ],
+          "sorting_layer": 0,
+          "visible": true,
+          "text": {
+            "text": "Очки: 0",
+            "font_path": "",
+            "size_px": 28,
+            "color": [
+              1.0,
+              0.85,
+              0.3
+            ],
+            "alpha": 1.0,
+            "align": "left",
+            "vertical_align": "top",
+            "wrap_width": 0.0,
+            "line_spacing": 1.0,
+            "bold": false,
+            "italic": false,
+            "outline_color": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "outline_width": 0.0,
+            "billboard": false,
+            "units_per_pixel": 0.01,
+            "visible": true,
+            "sorting_layer": 0
+          },
+          "type": "UIText"
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "name": "HUD_MenuButton",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "enabled": true,
+          "anchor": "top_right",
+          "clip": false,
+          "opacity": 1.0,
+          "pivot": [
+            1.0,
+            0.0
+          ],
+          "position": [
+            -16.0,
+            16.0
+          ],
+          "size": [
+            140.0,
+            48.0
+          ],
+          "sorting_layer": 0,
+          "visible": true,
+          "font_path": "",
+          "hover_color": [
+            0.35,
+            0.42,
+            0.62,
+            1.0
+          ],
+          "interactive": true,
+          "normal_color": [
+            0.25,
+            0.3,
+            0.45,
+            1.0
+          ],
+          "on_click": "load_scene:main_menu.scene.json",
+          "pressed_color": [
+            0.15,
+            0.2,
+            0.32,
+            1.0
+          ],
+          "size_px": 24,
+          "text": "Меню",
+          "text_color": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "type": "UIButton"
+        }
+      ]
+    }
+  ]
+}

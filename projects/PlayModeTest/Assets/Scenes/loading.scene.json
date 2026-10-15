@@ -1,0 +1,264 @@
+{
+  "format": "myengine.scene",
+  "version": 2,
+  "name": "Loading",
+  "sky": {
+    "enabled": true,
+    "mode": "procedural",
+    "zenith_color": [
+      0.25,
+      0.45,
+      0.85
+    ],
+    "horizon_color": [
+      0.7,
+      0.8,
+      0.95
+    ],
+    "ground_color": [
+      0.2,
+      0.18,
+      0.15
+    ],
+    "sun_color": [
+      1.0,
+      0.95,
+      0.85
+    ],
+    "sun_size": 1.0,
+    "sun_glow": 20.0,
+    "exposure": 1.2,
+    "intensity": 1.0,
+    "texture_guid": null
+  },
+  "objects": [
+    {
+      "uid": "cc34a46f6d1b54b1",
+      "name": "Camera",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          0.0,
+          1.0,
+          5.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "camera": {
+            "name": "Main Camera",
+            "mode": "perspective",
+            "fov": 60.0,
+            "near": 0.1,
+            "far": 500.0,
+            "aspect": 1.7777777777777777,
+            "aspect_mode": "viewport",
+            "ortho_height": 10.0,
+            "position": [
+              0.0,
+              1.0,
+              5.0
+            ],
+            "rotation": [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "viewport_rect": [
+              0.0,
+              0.0,
+              1.0,
+              1.0
+            ],
+            "clear_color": [
+              0.078,
+              0.075,
+              0.071,
+              1.0
+            ],
+            "clear_flags": [
+              "color",
+              "depth"
+            ],
+            "culling_mask": 4294967295,
+            "depth": 0,
+            "enabled": true
+          },
+          "local_offset": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "local_rotation": [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "follow_owner": true,
+          "type": "CameraComponent"
+        }
+      ]
+    },
+    {
+      "uid": "2a664cd25e977fc5",
+      "name": "LoadingPanel",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": null,
+      "transform": {
+        "position": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "enabled": true,
+          "anchor": "middle_center",
+          "clip": false,
+          "opacity": 1.0,
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "position": [
+            0.0,
+            0.0
+          ],
+          "size": [
+            520.0,
+            140.0
+          ],
+          "sorting_layer": 0,
+          "visible": true,
+          "border_color": [
+            0.35,
+            0.5,
+            0.9,
+            1.0
+          ],
+          "border_width": 3.0,
+          "color": [
+            0.05,
+            0.07,
+            0.12,
+            0.92
+          ],
+          "type": "UIPanel"
+        }
+      ]
+    },
+    {
+      "uid": "50f2be7f56a14b1a",
+      "name": "LoadingLabel",
+      "tag": "Untagged",
+      "layer": 1,
+      "active": true,
+      "parent": {
+        "uid": "2a664cd25e977fc5"
+      },
+      "transform": {
+        "position": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "components": [
+        {
+          "enabled": true,
+          "anchor": "middle_center",
+          "clip": false,
+          "opacity": 1.0,
+          "pivot": [
+            0.5,
+            0.5
+          ],
+          "position": [
+            0.0,
+            0.0
+          ],
+          "size": [
+            480.0,
+            70.0
+          ],
+          "sorting_layer": 0,
+          "visible": true,
+          "text": {
+            "text": "Загрузка... 0%",
+            "font_path": "",
+            "size_px": 44,
+            "color": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "alpha": 1.0,
+            "align": "center",
+            "vertical_align": "top",
+            "wrap_width": 0.0,
+            "line_spacing": 1.0,
+            "bold": false,
+            "italic": false,
+            "outline_color": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "outline_width": 0.0,
+            "billboard": false,
+            "units_per_pixel": 0.01,
+            "visible": true,
+            "sorting_layer": 0
+          },
+          "type": "UIText"
+        },
+        {
+          "auto_start": true,
+          "path": "Assets/Scripts/loading_progress.py",
+          "type": "ScriptComponent"
+        }
+      ]
+    }
+  ]
+}
