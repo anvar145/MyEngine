@@ -387,6 +387,21 @@ class GpuMesh:
         """Ограничивающий параллелепипед ``(min, max)``."""
         return self._aabb_min, self._aabb_max
 
+    def cpu_triangles(self) -> tuple[np.ndarray, np.ndarray]:
+        """Позиции ``(n, 3)`` и треугольники ``(m, 3)`` из CPU-копии вершин.
+
+        Нужны точному пикингу редактора; данные остаются в памяти и после
+        :meth:`upload`.
+        """
+        offset = self._layout.attribute("position").offset // 4
+        positions = self._vertex_data[:, offset : offset + 3]
+        if self._index_data is not None:
+            indices = self._index_data
+        else:
+            indices = np.arange(self._vertex_count, dtype=np.uint32)
+        count = (indices.size // 3) * 3
+        return positions, indices[:count].reshape(-1, 3)
+
     @property
     def gpu_bytes(self) -> int:
         """Объём занимаемой видеопамяти (вершины + индексы)."""

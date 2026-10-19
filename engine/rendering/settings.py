@@ -9,6 +9,8 @@ from __future__ import annotations
 from dataclasses import dataclass
 from enum import Enum
 
+from engine.core.frame_budget import FrameBudget
+
 __all__ = ["QualityTier", "RenderSettings", "ShadowSettings"]
 
 
@@ -38,6 +40,11 @@ class QualityTier(str, Enum):
     def enable_post_effects(self) -> bool:
         """Включены ли пост-эффекты (tone map, bloom и т. п.)."""
         return self is not QualityTier.LOW
+
+    @property
+    def budget(self) -> FrameBudget:
+        """Бюджет кадра игровых подсистем профиля (анимация, ИИ, физика)."""
+        return FrameBudget.for_tier(self.value)
 
 
 @dataclass(slots=True)

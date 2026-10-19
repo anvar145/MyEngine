@@ -48,6 +48,7 @@ from engine.core.physics_components import (
     CharacterControllerComponent,
     ColliderComponent,
 )
+from engine.core.ray_triangles import ray_mesh_distance
 from engine.core.resources import (
     MeshAsset,
     ResourceManager,
@@ -74,6 +75,7 @@ from engine.rendering import (
 )
 from engine.rendering.camera import quaternion_from_forward
 from engine.rendering.cooked_model import load_cooked_parts
+from engine.rendering.debug_pass import DebugPass
 from engine.rendering.dynamic_resolution import read_hdr_hint, read_render_hints
 from engine.rendering.material_loader import load_pbr_material
 from engine.rendering.physics_debug import PhysicsDebugPass
@@ -179,6 +181,7 @@ class EditorViewport(QWidget):
         #: Режим каркасов коллайдеров: ``off`` / ``selected`` / ``all``.
         self.collider_mode = COLLIDER_MODE_SELECTED
         self._physics_pass: PhysicsDebugPass | None = None
+        self._debug_pass: DebugPass | None = None
         # Гизмо трансформа выделенного объекта (оси перемещения/поворота/масштаба).
         self.transform_gizmo = TransformGizmo()
         #: Трансформ цели в начале перетаскивания гизмо (для записи в историю).
@@ -312,6 +315,12 @@ class EditorViewport(QWidget):
         self._physics_pass.enabled = self.show_colliders
         self._physics_pass.handle_filter = self._collider_filter
         renderer.add_pass(self._physics_pass)
+        # Оверлеи engine.debug (навмеш, кости, пути): провайдеры получают сцену.
+        self._debug_pass = DebugPass(
+            context=lambda: self.context.scene, auto_advance=True
+        )
+        self._debug_pass.registry.subscribe(self._on_overlays_changed)
+        renderer.add_pass(self._debug_pass)
         self.viewport.set_draw_provider(self._provide_draw_items)
         _log.info("Вьюпорт редактора готов: %s", renderer.info.describe())
         self.ready.emit()
@@ -642,6 +651,30 @@ class EditorViewport(QWidget):
             self._physics_pass.enabled = self.show_colliders
         self.refresh()
 
+    @property
+    def debug_overlays(self):
+        """Реестр оверлеев ``engine.debug`` (общий для процесса редактора)."""
+        from engine import debug
+
+        return debug.overlays
+
+    def set_debug_overlays_visible(self, visible: bool) -> None:
+        """Общий выключатель оверлеев ``engine.debug`` (F3)."""
+        self.debug_overlays.set_visible(visible)
+        self.refresh()
+
+    def set_debug_overlay_enabled(self, name: str, enabled: bool) -> None:
+        """Включить/выключить один оверлей ``engine.debug``."""
+        self.debug_overlays.set_enabled(name, enabled)
+        self.refresh()
+
+    def _on_overlays_changed(self, registry) -> None:
+        try:
+            if self.viewport is not None:
+                self.viewport.update()
+        except RuntimeError:  # окно закрыто: Qt-объект уже удалён
+            registry.unsubscribe(self._on_overlays_changed)
+
     def set_colliders_visible(self, visible: bool) -> None:
         """Совместимость: включить режим «все» или выключить каркасы."""
         self.set_collider_mode(COLLIDER_MODE_ALL if visible else COLLIDER_MODE_OFF)
@@ -871,7 +904,13 @@ class EditorViewport(QWidget):
                     )
 
     def pick_object_at(self, x: float, y: float) -> GameObject | None:
-        """Найти ближайший объект с мешем под точкой экрана (луч против AABB)."""
+        """Найти ближайший объект с мешем под точкой экрана.
+
+        AABB — грубый отсев; затем луч проверяется по треугольникам частей меша
+        (:func:`_ray_parts_distance`). Промах по треугольникам при попадании в
+        коробку — это промах (клик в пустой угол коробки уровня). Если CPU-копии
+        треугольников нет, остаётся попадание в AABB (см. :func:`choose_pick`).
+        """
         if self._renderer is None:
             return None
         width, height = self._viewport_size()
@@ -888,10 +927,16 @@ class EditorViewport(QWidget):
                 continue
             matrix = game_object.transform.world_matrix
             span = _ray_box_span(origin, direction, matrix, bounds)
-            if span is not None:
+            if span is None:
+                continue
+            parts = [mesh for mesh, _ in self._parts_for(component)]
+            exact = _ray_parts_distance(origin, direction, matrix, parts)
+            if exact is _NO_TRIANGLES:
                 hits.append(
                     _PickHit(game_object, span[0], span[1], _box_volume(matrix, bounds))
                 )
+            elif exact is not None:
+                hits.append(_PickHit(game_object, exact, exact, 0.0, exact=True))
         return choose_pick(hits)
 
     def _on_viewport_click(self, x: float, y: float) -> None:
@@ -1484,12 +1529,52 @@ class _GizmoDragHandler:
 
 @dataclass(frozen=True)
 class _PickHit:
-    """Попадание луча в AABB объекта: вход, выход и объём коробки."""
+    """Попадание луча в объект: вход, выход и объём коробки.
+
+    Точное попадание по треугольнику (``exact``) — вырожденная коробка:
+    ``enter == exit`` — расстояние до грани, объём 0. Так оно всегда побеждает
+    объемлющую коробку-фолбэк и сравнивается с другими точными по расстоянию.
+    """
 
     game_object: GameObject
     enter: float
     exit: float
     volume: float
+    exact: bool = False
+
+
+#: Маркер «у частей меша нет треугольников на CPU» (нужен фолбэк на AABB).
+_NO_TRIANGLES = object()
+
+
+def _ray_parts_distance(
+    origin: Vector3,
+    direction: Vector3,
+    world_matrix: np.ndarray,
+    parts: Sequence[GpuMesh],
+) -> float | object | None:
+    """Расстояние до ближайшего треугольника среди частей меша.
+
+    Returns:
+        Расстояние, ``None`` (луч прошёл мимо всех треугольников) или
+        :data:`_NO_TRIANGLES`, если треугольников нет (пикинг по AABB).
+    """
+    o = np.array(origin.to_tuple(), dtype=float)
+    d = np.array(direction.to_tuple(), dtype=float)
+    best: float | None = None
+    tested = False
+    for mesh in parts:
+        getter = getattr(mesh, "cpu_triangles", None)
+        if getter is None:
+            continue
+        vertices, triangles = getter()
+        if len(triangles) == 0:
+            continue
+        tested = True
+        distance = ray_mesh_distance(o, d, world_matrix, vertices, triangles)
+        if distance is not None and (best is None or distance < best):
+            best = distance
+    return best if tested else _NO_TRIANGLES
 
 
 #: Вложенный объект выбирается вместо внешнего, если его коробка меньше во
@@ -1498,10 +1583,13 @@ _NESTED_PICK_RATIO = 0.5
 
 
 def choose_pick(hits: list[_PickHit]) -> GameObject | None:
-    """Выбрать объект среди попаданий луча в AABB.
+    """Выбрать объект среди попаданий луча.
 
-    Базово побеждает ближайший по входу луча. Но огромная коробка (уровень),
-    внутри которой стоят мелкие объекты, всегда перехватывала бы клик: луч
+    Точные попадания по треугольникам (``exact``) сравниваются по расстоянию
+    до грани. Эвристика ниже нужна только фолбэку на AABB (меш без CPU-копии
+    треугольников): базово побеждает ближайший по входу луча. Но огромная
+    коробка (уровень), внутри которой стоят мелкие объекты, всегда
+    перехватывала бы клик: луч
     входит в неё раньше. Поэтому, если луч входит в меньшую коробку, пока он
     ещё внутри текущей победившей (и та меньше хотя бы вдвое), выбирается
     вложенная.

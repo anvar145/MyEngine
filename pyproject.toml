@@ -36,6 +36,7 @@ packages = [
     "engine.core.resources.cookers",
     "engine.core.resources.importers",
     "engine.core.resources.loaders",
+    "engine.debug",
     "engine.physics",
     "engine.player",
     "engine.rendering",

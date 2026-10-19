@@ -32,6 +32,7 @@ from engine.core.ui_system import UISystem
 from engine.rendering import GpuMesh
 from engine.rendering.camera import Camera, CameraComponent
 from engine.rendering.cooked_model import load_cooked_parts
+from engine.rendering.debug_pass import DebugPass
 from engine.rendering.lighting import LightComponent
 from engine.rendering.material_loader import load_pbr_material
 from engine.rendering.physics_debug import PhysicsDebugPass
@@ -113,6 +114,8 @@ class SceneRenderer:
         self._ui_filler = UIFiller()
         self._ui_pass: UIPass | None = None
         self._physics_pass: PhysicsDebugPass | None = None
+        #: Отладочные оверлеи ``engine.debug`` (F3); создаются при первом показе.
+        self._debug_pass: DebugPass | None = None
         self.ui_system = self._make_ui_system()
         self.assets = assets
         self.project_root = project_root
@@ -182,6 +185,33 @@ class SceneRenderer:
             index = names.index("transparent") + 1 if "transparent" in names else None
             self.renderer.add_pass(self._physics_pass, index=index)
         self._physics_pass.enabled = bool(enabled)
+
+    def set_debug_overlays(self, visible: bool) -> None:
+        """Показать/скрыть оверлеи ``engine.debug`` (F3 в плеере)."""
+        if self._debug_pass is None:
+            if not visible:
+                return
+            self._debug_pass = DebugPass(context=lambda: self.scene)
+        self._debug_pass.registry.set_visible(visible)
+        self._keep_debug_last()
+
+    def _keep_debug_last(self) -> None:
+        """Держать ``DebugPass`` последним проходом основной фазы.
+
+        Проходы текста и спрайтов добавляются лениво (по первому объекту) и
+        иначе оказались бы после него — поверх отладочных линий.
+        """
+        debug = self._debug_pass
+        if debug is None:
+            return
+        graph = self.renderer.graph
+        passes = [p for p in graph.passes if not getattr(p, "after_post", False)]
+        if passes and passes[-1] is debug:
+            return
+        graph.remove_pass(debug)
+        rest = list(graph.passes)
+        mains = [i for i, p in enumerate(rest) if not getattr(p, "after_post", False)]
+        self.renderer.add_pass(debug, index=mains[-1] + 1 if mains else 0)
 
     def update_ui(self, viewport: tuple[int, int]) -> None:
         """Обработать мышь для UI (до обновления скриптов кадра)."""
@@ -445,6 +475,7 @@ class SceneRenderer:
         self._fill_sprites()
         self._fill_text()
         self._fill_ui(viewport)
+        self._keep_debug_last()
         self.renderer.begin_frame(
             self.camera, viewport, target=target, post=self.post
         )
@@ -537,6 +568,10 @@ class SceneRenderer:
             self._physics_pass.dispose()
             self.renderer.graph.remove_pass(self._physics_pass)
             self._physics_pass = None
+        if self._debug_pass is not None:
+            self._debug_pass.dispose()
+            self.renderer.graph.remove_pass(self._debug_pass)
+            self._debug_pass = None
         self._ui_filler.dispose()
         self._meshes.clear()
         self._batches.clear()
