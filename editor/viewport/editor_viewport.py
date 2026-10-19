@@ -19,6 +19,7 @@ from __future__ import annotations
 
 import logging
 from collections.abc import Callable, Sequence
+from dataclasses import dataclass
 from pathlib import Path
 
 import numpy as np
@@ -875,7 +876,7 @@ class EditorViewport(QWidget):
             return None
         width, height = self._viewport_size()
         origin, direction = self.viewport.camera.ray_from_screen(x, y, width, height)
-        best: tuple[float, GameObject] | None = None
+        hits: list[_PickHit] = []
         for game_object in self.context.scene.objects:
             if not game_object.active_in_hierarchy:
                 continue
@@ -885,12 +886,13 @@ class EditorViewport(QWidget):
             bounds = self._bounds_for(component)
             if bounds is None:
                 continue
-            distance = _ray_box_distance(
-                origin, direction, game_object.transform.world_matrix, bounds
-            )
-            if distance is not None and (best is None or distance < best[0]):
-                best = (distance, game_object)
-        return best[1] if best is not None else None
+            matrix = game_object.transform.world_matrix
+            span = _ray_box_span(origin, direction, matrix, bounds)
+            if span is not None:
+                hits.append(
+                    _PickHit(game_object, span[0], span[1], _box_volume(matrix, bounds))
+                )
+        return choose_pick(hits)
 
     def _on_viewport_click(self, x: float, y: float) -> None:
         """Клик без перетаскивания: выбрать объект под курсором (или снять выбор)."""
@@ -1480,19 +1482,81 @@ class _GizmoDragHandler:
         self._viewport.gizmo_release()
 
 
+@dataclass(frozen=True)
+class _PickHit:
+    """Попадание луча в AABB объекта: вход, выход и объём коробки."""
+
+    game_object: GameObject
+    enter: float
+    exit: float
+    volume: float
+
+
+#: Вложенный объект выбирается вместо внешнего, если его коробка меньше во
+#: столько раз (иначе соседние перекрывающиеся объекты не «дрожат» при клике).
+_NESTED_PICK_RATIO = 0.5
+
+
+def choose_pick(hits: list[_PickHit]) -> GameObject | None:
+    """Выбрать объект среди попаданий луча в AABB.
+
+    Базово побеждает ближайший по входу луча. Но огромная коробка (уровень),
+    внутри которой стоят мелкие объекты, всегда перехватывала бы клик: луч
+    входит в неё раньше. Поэтому, если луч входит в меньшую коробку, пока он
+    ещё внутри текущей победившей (и та меньше хотя бы вдвое), выбирается
+    вложенная.
+
+    Args:
+        hits: Попадания (порядок любой).
+
+    Returns:
+        Выбранный объект или ``None``.
+    """
+    if not hits:
+        return None
+    ordered = sorted(hits, key=lambda hit: hit.enter)
+    best = ordered[0]
+    for hit in ordered[1:]:
+        if hit.enter > best.exit:
+            break
+        if hit.volume < best.volume * _NESTED_PICK_RATIO:
+            best = hit
+    return best.game_object
+
+
+def _box_volume(world_matrix: np.ndarray, bounds: tuple[Vector3, Vector3]) -> float:
+    """Объём AABB меша в мировых единицах (с учётом масштаба объекта)."""
+    matrix = np.asarray(world_matrix, dtype=float).reshape(4, 4)
+    size = np.array(bounds[1].to_tuple(), dtype=float) - np.array(
+        bounds[0].to_tuple(), dtype=float
+    )
+    return float(abs(np.linalg.det(matrix[:3, :3])) * np.prod(np.abs(size)))
+
+
 def _ray_box_distance(
     origin: Vector3,
     direction: Vector3,
     world_matrix: np.ndarray,
     bounds: tuple[Vector3, Vector3],
 ) -> float | None:
-    """Расстояние до пересечения луча с AABB меша в локальных осях объекта.
+    """Расстояние до входа луча в AABB меша (см. :func:`_ray_box_span`)."""
+    span = _ray_box_span(origin, direction, world_matrix, bounds)
+    return None if span is None else span[0]
+
+
+def _ray_box_span(
+    origin: Vector3,
+    direction: Vector3,
+    world_matrix: np.ndarray,
+    bounds: tuple[Vector3, Vector3],
+) -> tuple[float, float] | None:
+    """Интервал луча внутри AABB меша в локальных осях объекта.
 
     Луч переводится в локальное пространство объекта и проверяется «слэбами»:
     так масштаб и поворот объекта учитываются без построения OBB.
 
     Returns:
-        Расстояние вдоль луча в мировых единицах или ``None``, если промах.
+        ``(вход, выход)`` вдоль луча в мировых единицах или ``None``, если промах.
     """
     matrix = np.asarray(world_matrix, dtype=float).reshape(4, 4)
     try:
@@ -1517,4 +1581,4 @@ def _ray_box_distance(
             return None
     # Параметр в локальных единицах совпадает с мировым: направление луча
     # преобразовано той же матрицей без нормализации.
-    return t_min
+    return t_min, t_max

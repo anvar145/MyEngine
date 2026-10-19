@@ -6,6 +6,7 @@ import logging
 from typing import Protocol
 
 from engine.core.input import MouseState
+from engine.core.input.keys import KEY_F5, KEY_SHIFT_F5, MOD_SHIFT
 
 __all__ = ["GlfwWindow", "HiddenGlfwContext", "IWindow", "create_window"]
 
@@ -115,11 +116,14 @@ class GlfwWindow:
                 self.input_backend.on_cursor_leave()
 
     def _on_key(
-        self, _window: object, key: int, _scan: int, action: int, _mods: int
+        self, _window: object, key: int, _scan: int, action: int, mods: int
     ) -> None:
         if action == 1:
             self.keys_pressed.add(key)
-            self.key_events.append(key)
+            if key == KEY_F5 and mods & MOD_SHIFT:
+                self.key_events.append(KEY_SHIFT_F5)  # не быстрое сохранение
+            else:
+                self.key_events.append(key)
         elif action == 0:
             self.keys_pressed.discard(key)
         if self.input_backend is not None and action in (0, 1):
