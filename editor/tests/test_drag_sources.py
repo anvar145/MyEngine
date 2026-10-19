@@ -27,6 +27,62 @@ def test_assets_panel_drags_files(window) -> None:
     assert tree is not None and tree.dragEnabled()
 
 
+def _press_on_asset(window, monkeypatch, tmp_path):
+    """Имитировать нажатие левой кнопки на файле ассета: (панель, пути выбора)."""
+    from PySide6.QtCore import QModelIndex, Qt
+    from PySide6.QtWidgets import QApplication
+
+    path = tmp_path / "level.glb"
+    path.write_bytes(b"x")
+    panel = window.assets
+    monkeypatch.setattr(panel, "path_for_index", lambda _index: path)
+    monkeypatch.setattr(
+        QApplication, "mouseButtons", staticmethod(lambda: Qt.MouseButton.LeftButton)
+    )
+    selected: list[str] = []
+    panel.asset_selected.connect(selected.append)
+    panel._on_current_changed(QModelIndex(), QModelIndex())
+    return panel, selected, path
+
+
+def test_asset_press_does_not_clear_object_selection(
+    window, monkeypatch, tmp_path
+) -> None:
+    cube = window.create_primitive("cube")
+    window.context.selection.select(cube)
+    panel, selected, path = _press_on_asset(window, monkeypatch, tmp_path)
+    assert selected == []  # пока кнопка зажата, выбор не объявлен
+    assert window.context.selection.objects == (cube,)
+    panel.tree.released.emit()  # клик без drag
+    assert selected == [str(path)]
+
+
+def test_asset_drag_cancels_pending_selection(window, monkeypatch, tmp_path) -> None:
+    cube = window.create_primitive("cube")
+    window.context.selection.select(cube)
+    panel, selected, _path = _press_on_asset(window, monkeypatch, tmp_path)
+    panel.tree.drag_started.emit()
+    panel.tree.released.emit()
+    assert selected == []
+    assert window.context.selection.objects == (cube,)
+
+
+def test_asset_keyboard_selection_is_immediate(window, monkeypatch, tmp_path) -> None:
+    from PySide6.QtCore import QModelIndex, Qt
+    from PySide6.QtWidgets import QApplication
+
+    path = tmp_path / "a.glb"
+    path.write_bytes(b"x")
+    monkeypatch.setattr(window.assets, "path_for_index", lambda _index: path)
+    monkeypatch.setattr(
+        QApplication, "mouseButtons", staticmethod(lambda: Qt.MouseButton.NoButton)
+    )
+    selected: list[str] = []
+    window.assets.asset_selected.connect(selected.append)
+    window.assets._on_current_changed(QModelIndex(), QModelIndex())
+    assert selected == [str(path)]
+
+
 def test_double_click_on_py_opens_script_editor(window, tmp_path) -> None:
     path = tmp_path / "x.py"
     path.write_text("a = 1\n", "utf-8")

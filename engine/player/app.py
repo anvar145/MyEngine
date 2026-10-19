@@ -34,7 +34,7 @@ from engine.core.input import (
     MouseState,
     default_input_map,
 )
-from engine.core.input.keys import KEY_F2, KEY_F5, KEY_F9
+from engine.core.input.keys import KEY_F2, KEY_F5, KEY_F9, KEY_SHIFT_F5
 from engine.core.platform_info import (
     is_writable_dir,
     user_cache_root,
@@ -798,6 +798,9 @@ class PlayerApp:
             events, window.key_events = window.key_events, []
             if KEY_F2 in events:
                 self.toggle_colliders()
+            if KEY_SHIFT_F5 in events:
+                _log.info("Shift+F5: остановка игры")
+                self.stop_requested = True
             if KEY_F5 in events:
                 self._pending_quick.append("save")
             if KEY_F9 in events:

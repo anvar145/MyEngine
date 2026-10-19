@@ -16,6 +16,7 @@ from PySide6.QtCore import (
 from PySide6.QtGui import QBrush, QColor
 from PySide6.QtWidgets import (
     QAbstractItemView,
+    QApplication,
     QComboBox,
     QFileIconProvider,
     QFileSystemModel,
@@ -180,6 +181,28 @@ class _ImportAwareModel(QFileSystemModel):
         return value
 
 
+class _AssetTree(QTreeView):
+    """Дерево ассетов, отличающее клик от начала перетаскивания.
+
+    Выбор ассета по нажатию кнопки очищал бы выделение объекта до того, как
+    файл дотащат до поля ссылки в инспекторе. Поэтому при выборе мышью выбор
+    откладывается до отпускания кнопки, а начало drag его отменяет.
+    """
+
+    released = Signal()
+    drag_started = Signal()
+
+    def startDrag(self, supported_actions) -> None:  # noqa: N802 - API Qt
+        """Сообщить о начале перетаскивания и запустить его."""
+        self.drag_started.emit()
+        super().startDrag(supported_actions)
+
+    def mouseReleaseEvent(self, event) -> None:  # noqa: N802 - API Qt
+        """Сообщить об отпускании кнопки после стандартной обработки."""
+        super().mouseReleaseEvent(event)
+        self.released.emit()
+
+
 class AssetsPanel(DockPanel):
     """Обозреватель файлов проекта.
 
@@ -222,7 +245,10 @@ class AssetsPanel(DockPanel):
         self.proxy = _AssetFilter(self)
         self.proxy.setSourceModel(self.fs_model)
 
-        self.tree = QTreeView(container)
+        self._pending_path: str | None = None
+        self.tree = _AssetTree(container)
+        self.tree.released.connect(self._flush_pending)
+        self.tree.drag_started.connect(self._cancel_pending)
         self.tree.setModel(self.proxy)
         self.tree.setRootIndex(self.proxy.mapFromSource(self.fs_model.index(str(self.root))))
         self.tree.setHeaderHidden(True)
@@ -292,8 +318,23 @@ class AssetsPanel(DockPanel):
     def _on_current_changed(self, current: QModelIndex, _previous: QModelIndex) -> None:
         """Сообщить о выборе файла."""
         path = self.path_for_index(current)
-        if path is not None and path.is_file():
+        if path is None or not path.is_file():
+            return
+        if QApplication.mouseButtons() & Qt.MouseButton.LeftButton:
+            self._pending_path = str(path)  # выбор мышью - после отпускания
+        else:
+            self._pending_path = None
             self.asset_selected.emit(str(path))
+
+    def _flush_pending(self) -> None:
+        """Сообщить об отложенном выборе: кнопку отпустили без drag."""
+        path, self._pending_path = self._pending_path, None
+        if path is not None:
+            self.asset_selected.emit(path)
+
+    def _cancel_pending(self) -> None:
+        """Отменить отложенный выбор: файл потащили."""
+        self._pending_path = None
 
     def _on_double_click(self, index: QModelIndex) -> None:
         """Добавить модель в сцену по двойному клику."""

@@ -46,6 +46,13 @@ FLOOR_HALF = 15.0
 STEP_HEIGHT = 0.15
 SLOPE_DEGREES = 20.0
 
+#: Ряды врагов по Z. Диаметр капсулы врага 0.8 м; зазор между рядами должен быть
+#: заметно больше диаметра персонажа (0.8 м), иначе на скорости он зажимается
+#: между патрулирующими врагами (B9: при шаге 1.2 м зазор был 0.4 м).
+ENEMY_ROW_START = 7.2
+ENEMY_ROW_PITCH = 1.8
+ENEMY_DIAMETER = 0.8
+
 
 def look_rotation(direction: Vector3) -> Quaternion:
     """Ориентация «смотреть вдоль direction» через yaw/pitch (``+Z`` — вперёд).
@@ -136,7 +143,9 @@ def build_scene() -> Scene:
         row, column = divmod(index, 5)
         enemy = scene.create_game_object(
             f"Enemy {index + 1}",
-            position=Vector3(-8.0 + column * 4.0, 0.9, 8.0 + row * 1.2),
+            position=Vector3(
+                -8.0 + column * 4.0, 0.9, ENEMY_ROW_START + row * ENEMY_ROW_PITCH
+            ),
             scale=Vector3(0.8, 1.8, 0.8),
         )
         enemy.add_component(MeshRenderer("cylinder", color=Vector3(0.8, 0.2, 0.2)))
