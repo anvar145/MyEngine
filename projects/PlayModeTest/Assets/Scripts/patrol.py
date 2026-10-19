@@ -10,6 +10,8 @@ from __future__ import annotations
 
 import numpy as np
 
+from engine import debug
+
 AMPLITUDE = 3.0
 OMEGA = 0.8
 
@@ -39,3 +41,21 @@ def on_fixed_update_batch(self, items, dt):
     positions = positions.astype(np.float64)
     positions[:, 0] += speed * dt
     store.set_local_batch(indices, positions)
+    if debug.overlays.visible:
+        _draw_debug(positions, speed, OMEGA * now + phases, dt)
+
+
+def _draw_debug(positions, speed, angles, dt):
+    """F3: отрезок патруля (пути) и конус «зрения» по ходу движения.
+
+    Шаг фиксированный, а кадров может быть больше: ключ заменяет фигуру врага
+    прошлого шага, а ``duration`` держит её между шагами.
+    """
+    centers = positions[:, 0] - AMPLITUDE * np.sin(angles)
+    life = dt * 4.0
+    for i, (pos, center, v) in enumerate(zip(positions, centers, speed, strict=True)):
+        y, z = pos[1], pos[2]
+        debug.path([(center - AMPLITUDE, y, z), (center + AMPLITUDE, y, z)],
+                   duration=life, key=("patrol_path", i))
+        forward = (1.0 if v >= 0 else -1.0, 0.0, 0.0)
+        debug.cone(pos, forward, 20.0, 2.5, duration=life, key=("patrol_sight", i))

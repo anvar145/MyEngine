@@ -340,6 +340,28 @@ class MainWindow(QMainWindow):
             collider_group.addAction(action)
             self.collider_actions[mode] = action
 
+        self.action_debug_overlays = QAction(self)
+        self.action_debug_overlays.setCheckable(True)
+        self.action_debug_overlays.setShortcut(QKeySequence("F3"))
+        self.action_debug_overlays.setChecked(self.viewport.debug_overlays.visible)
+        self.action_debug_overlays.toggled.connect(
+            self.viewport.set_debug_overlays_visible
+        )
+        #: Пункты оверлеев engine.debug (коллайдеры — в своём подменю).
+        self.overlay_actions: dict[str, QAction] = {}
+        for overlay in self.viewport.debug_overlays:
+            if overlay.external:
+                continue
+            action = QAction(self)
+            action.setCheckable(True)
+            action.setChecked(overlay.enabled)
+            action.toggled.connect(
+                lambda checked, n=overlay.name: (
+                    self.viewport.set_debug_overlay_enabled(n, checked)
+                )
+            )
+            self.overlay_actions[overlay.name] = action
+
         self.action_reset_layout = QAction(self)
         self.action_reset_layout.triggered.connect(self.reset_layout)
 
@@ -461,6 +483,11 @@ class MainWindow(QMainWindow):
         self.menu_colliders = self.menu_view.addMenu("")
         for action in self.collider_actions.values():
             self.menu_colliders.addAction(action)
+        self.menu_overlays = self.menu_view.addMenu("")
+        self.menu_overlays.addAction(self.action_debug_overlays)
+        self.menu_overlays.addSeparator()
+        for action in self.overlay_actions.values():
+            self.menu_overlays.addAction(action)
         self.view_menu_separator = self.menu_view.addSeparator()
         self.menu_view.addAction(self.action_reset_layout)
 
@@ -687,6 +714,10 @@ class MainWindow(QMainWindow):
         self.menu_play.setTitle(tr("menu.play"))
         self.menu_view.setTitle(tr("menu.view"))
         self.menu_colliders.setTitle(tr("menu.view.colliders"))
+        self.menu_overlays.setTitle(tr("menu.view.overlays"))
+        self.action_debug_overlays.setText(tr("menu.view.overlays_show"))
+        for name, action in self.overlay_actions.items():
+            action.setText(tr(f"menu.view.overlay.{name}"))
         self._update_play_label()
         self.menu_language.setTitle(tr("menu.language"))
         self.menu_help.setTitle(tr("menu.help"))

@@ -4,6 +4,7 @@ from __future__ import annotations
 
 __all__ = [
     "KEY_F2",
+    "KEY_F3",
     "KEY_F5",
     "KEY_F9",
     "KEY_SHIFT_F5",
@@ -13,6 +14,7 @@ __all__ = [
 ]
 
 KEY_F2 = 291
+KEY_F3 = 292
 KEY_F5 = 294
 KEY_F9 = 298
 #: Бит Shift в маске модификаторов GLFW.

@@ -34,6 +34,7 @@ from editor.i18n import DEFAULT_LANGUAGE, LANGUAGES
 from editor.main_window import MainWindow
 from editor.project_manager import resolve_launch_project
 from editor.theme import apply_theme
+from engine.core.frame_budget import resolve_quality, set_current_budget
 from engine.core.logger import setup_logger
 from engine.rendering.qt_context import apply_surface_format
 from engine.rendering.settings import QualityTier, RenderSettings
@@ -78,9 +79,9 @@ def build_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument(
         "--quality",
-        default=QualityTier.MEDIUM.value,
+        default=None,
         choices=[tier.value for tier in QualityTier],
-        help="профиль качества рендеринга",
+        help="профиль качества (иначе quality проекта, иначе medium)",
     )
     parser.add_argument("--width", type=int, default=1480, help="ширина окна")
     parser.add_argument("--height", type=int, default=900, help="высота окна")
@@ -151,6 +152,11 @@ def build_app(argv: list[str] | None = None) -> tuple[QApplication, argparse.Nam
     parser = build_parser()
     args = parser.parse_args(argv)
     _configure_console(args.verbose)
+    # Тот же выбор профиля и бюджета, что у плеера (Play Mode читает проект сам).
+    args.quality_cli = args.quality
+    quality = resolve_quality(getattr(args, "project", None), cli=args.quality)
+    args.quality = quality.tier
+    set_current_budget(quality.budget)
     settings = RenderSettings.for_quality(QualityTier(args.quality))
     apply_surface_format(settings)
     application = QApplication.instance() or QApplication(sys.argv[:1])
@@ -189,6 +195,10 @@ def run(argv: list[str] | None = None) -> int:
     application, args = build_app(argv)
     if not resolve_launch_project(args, REPO_ROOT):
         return 0
+    # Проект мог выбрать менеджер проектов: бюджет кадра берём уже из него.
+    set_current_budget(
+        resolve_quality(args.project, cli=args.quality_cli).budget
+    )
     context = create_context(args)
     window = MainWindow(context)
     window.resize(args.width, args.height)

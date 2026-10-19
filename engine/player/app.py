@@ -18,6 +18,7 @@ import traceback
 from pathlib import Path
 from typing import Any
 
+from engine import debug
 from engine.audio import (
     BUSES,
     AudioSystem,
@@ -26,6 +27,7 @@ from engine.audio import (
     load_audio_settings,
 )
 from engine.audio.system import SETTINGS_FILE as AUDIO_SETTINGS
+from engine.core.frame_budget import resolve_quality, set_current_budget
 from engine.core.game_loop import GameLoop
 from engine.core.input import (
     InputMap,
@@ -34,7 +36,7 @@ from engine.core.input import (
     MouseState,
     default_input_map,
 )
-from engine.core.input.keys import KEY_F2, KEY_F5, KEY_F9, KEY_SHIFT_F5
+from engine.core.input.keys import KEY_F2, KEY_F3, KEY_F5, KEY_F9, KEY_SHIFT_F5
 from engine.core.platform_info import (
     is_writable_dir,
     user_cache_root,
@@ -158,7 +160,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         "--quality",
         default=None,
         choices=[tier.value for tier in QualityTier],
-        help="профиль качества (иначе — build.json пака, иначе medium)",
+        help="профиль качества (иначе build.json пака, quality проекта, medium)",
     )
     parser.add_argument(
         "--user-dirs",
@@ -250,6 +252,11 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         help="показывать коллайдеры физики (переключается F2)",
     )
     parser.add_argument(
+        "--debug-overlays",
+        action="store_true",
+        help="показывать оверлеи engine.debug (переключается F3)",
+    )
+    parser.add_argument(
         "--frame-trace",
         default=None,
         metavar="PATH",
@@ -335,8 +342,15 @@ class PlayerApp:
         self.open_assets()
         #: Параметры сборки из ``build.json`` пака (``quality``, ``hdr``, ...).
         self.build_info = self._read_build_info()
-        if args.quality is None:
-            args.quality = str(self.build_info.get("quality") or "medium")
+        #: Профиль и бюджет кадра: общий с редактором конфиг (P4).
+        self.quality = resolve_quality(
+            self.project, cli=args.quality, build_info=self.build_info, vfs=self.vfs
+        )
+        args.quality = self.quality.tier
+        set_current_budget(self.quality.budget)
+        #: Максимум бодрствующих динамических тел за прогон (``--stats-json``).
+        self._physics_awake_max = 0
+        self._physics_over_budget = 0
         #: Собранная игра пишет кэш и логи в каталоги пользователя, не рядом с exe.
         self.user_dirs = bool(args.user_dirs) or is_frozen()
         self.game_name = game_name(self.project, self.vfs)
@@ -358,6 +372,7 @@ class PlayerApp:
         #: Инъекция клавиш (``--hold-keys``, IPC, тесты).
         self.manual_input = ManualInputBackend(self.input)
         self.show_colliders = bool(getattr(args, "show_colliders", False))
+        self.show_debug = bool(getattr(args, "debug_overlays", False))
         self._click_at: tuple[float, float] | None = None
         self.save_manager = self._make_save_manager()
         self.scenes = SceneManager(
@@ -768,6 +783,19 @@ class PlayerApp:
         if setter is not None:
             setter(self.show_colliders)
 
+    def _apply_debug_overlays(self) -> None:
+        """Передать рендеру флаг оверлеев ``engine.debug`` (если он умеет)."""
+        setter = getattr(self.scene_renderer, "set_debug_overlays", None)
+        if setter is not None:
+            setter(self.show_debug)
+
+    def toggle_debug_overlays(self) -> bool:
+        """Переключить оверлеи ``engine.debug`` (F3); вернуть новое состояние."""
+        self.show_debug = not self.show_debug
+        self._apply_debug_overlays()
+        _log.info("Оверлеи отладки: %s", "вкл" if self.show_debug else "выкл")
+        return self.show_debug
+
     def toggle_colliders(self) -> bool:
         """Переключить показ коллайдеров (F2); возвращает новое состояние."""
         self.show_colliders = not self.show_colliders
@@ -798,6 +826,8 @@ class PlayerApp:
             events, window.key_events = window.key_events, []
             if KEY_F2 in events:
                 self.toggle_colliders()
+            if KEY_F3 in events:
+                self.toggle_debug_overlays()
             if KEY_SHIFT_F5 in events:
                 _log.info("Shift+F5: остановка игры")
                 self.stop_requested = True
@@ -991,6 +1021,10 @@ class PlayerApp:
         )
         self.renderer.initialize()
         _log.info("Драйвер: %s", self.renderer.info.describe())
+        _log.info(
+            "Профиль %s (%s): %s",
+            self.quality.tier, self.quality.source, self.quality.budget.describe(),
+        )
         self.sky_pass = SkyPass(self.sky)
         self.renderer.set_sky(self.sky_pass)
         if self.window is not None:
@@ -1006,6 +1040,7 @@ class PlayerApp:
         self._apply_post()
         self._sync_extra_scenes()
         self._apply_collider_debug()
+        self._apply_debug_overlays()
 
     def _init_render_scale(self) -> None:
         """Выбрать начальный ``render_scale`` и включить динамическое разрешение."""
@@ -1256,7 +1291,8 @@ class PlayerApp:
             self.inject_mouse(x, y, "left", False)
         self._pump_keyboard()
         self.screen_fx.update(delta)
-        if not self.paused or self.step_frames > 0:
+        stepped = not self.paused or self.step_frames > 0
+        if stepped:
             if self.step_frames > 0:
                 self.step_frames -= 1
                 delta = 1.0 / 60.0
@@ -1268,6 +1304,8 @@ class PlayerApp:
             self.gpu_timer.begin()
         self._last_stats = self.scene_renderer.render(self.viewport(), self.target)
         self.gpu_timer.end()
+        # Кадр нарисован: одноразовые линии debug.* больше не нужны.
+        debug.draw.advance(delta if stepped else 0.0)
         elapsed = (time.perf_counter() - started) * 1000.0
         if not self.paused:
             self._update_dynamic_resolution(elapsed)
@@ -1304,8 +1342,26 @@ class PlayerApp:
             self._t_warm = now
         self._t_last = now
         self._samples_tri = getattr(self._last_stats, "triangles", 0)
+        self._track_physics_budget()
         if self.args.crash_after and self.frame >= self.args.crash_after:
             raise RuntimeError("Преднамеренное падение (--crash-after)")
+
+    def _track_physics_budget(self) -> None:
+        """Сравнить число бодрствующих тел с ``physics_max_active`` бюджета."""
+        world = getattr(self.scene, "physics_if_exists", None)
+        counter = getattr(getattr(world, "world", None), "awake_dynamic_count", None)
+        if counter is None:
+            return
+        awake = int(counter())
+        self._physics_awake_max = max(self._physics_awake_max, awake)
+        limit = self.quality.budget.physics_max_active
+        if awake > limit:
+            if self._physics_over_budget == 0:
+                _log.warning(
+                    "Физика вне бюджета: %d активных тел > %d (профиль %s)",
+                    awake, limit, self.quality.tier,
+                )
+            self._physics_over_budget += 1
 
     def _update_fps(self, now: float) -> None:
         self._fps_frames += 1
@@ -1589,6 +1645,10 @@ class PlayerApp:
             "triangles": getattr(self, "_samples_tri", 0),
             "fps": self._fps_average(),
             "driver": self.renderer.info.describe() if self.renderer else "",
+            "quality": self.quality.tier,
+            "budget": self.quality.budget.to_dict(),
+            "physics_awake_max": self._physics_awake_max,
+            "physics_over_budget_frames": self._physics_over_budget,
         }
 
 
